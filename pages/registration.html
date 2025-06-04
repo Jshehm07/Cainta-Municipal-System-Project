@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="registration.css">
+    <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="./registration.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="../images/Cainta-Rizal-Logo.png" alt="Cainta Rizal Logo" class="logo">
+            <h1>Municipal Health Information System</h1>
+            <p>Empowering local health services through technology.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section-card registration-section">
+            <form action="" id="registrationForm">
+                <h2>Registration</h2>
+                <h3>Patient Medical Information</h3>
+                <p>Register patients to access the system.</p>
+
+                <div class="form-group">
+                    <label for="patientName">Name of the Patient:</label>
+                    <input type="text" id="patientName" name="patientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" id="weight" name="weight" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="height">Height (cm):</label>
+                    <input type="number" id="height" name="height" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label>Allergies:</label><br>
+                    <label class="checkbox-label"><input type="checkbox" name="allergies" value="Pollen"> Pollen</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergies" value="Dust"> Dust</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergies" value="Peanuts"> Peanuts</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergies" value="Shellfish"> Shellfish</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergies" value="Dairy"> Dairy</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergies" value="None"> None</label>
+                    <label class="checkbox-label"><input type="checkbox" name="allergies" value="Other"> Other (Specify):</label>
+                    <input type="text" name="other_allergies" placeholder="e.g., Medications" style="margin-top: 5px;">
+                </div>
+                <div class="form-group">
+                    <label>Recent Illnesses:</label><br>
+                    <label class="checkbox-label"><input type="checkbox" name="illnesses" value="Fever"> Fever</label>
+                    <label class="checkbox-label"><input type="checkbox" name="illnesses" value="Cough"> Cough</label>
+                    <label class="checkbox-label"><input type="checkbox" name="illnesses" value="Cold"> Cold</label>
+                    <label class="checkbox-label"><input type="checkbox" name="illnesses" value="Headache"> Headache</label>
+                    <label class="checkbox-label"><input type="checkbox" name="illnesses" value="None"> None</label>
+                    <label class="checkbox-label"><input type="checkbox" name="illnesses" value="Other"> Other (Specify):</label>
+                    <input type="text" name="other_illnesses" placeholder="e.g., Flu, Dengue" style="margin-top: 5px;">
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="data-privacy-consent" name="data_privacy_consent" required>
+                    <label for="data-privacy-consent">I agree to the <a href="#data-privacy" class="privacy-link">Data Privacy Policy</a>.</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </section>
+
+        <section id="data-privacy" class="section-card data-privacy-section">
+            <h2>Data Privacy Act (Republic Act No. 10173) Compliance</h2>
+            <p>Our Municipal Health Information System is fully committed to protecting the privacy and security of all personal and sensitive personal information collected, processed, and stored within its operations, in strict compliance with the <strong>Philippine Data Privacy Act of 2012 (Republic Act No. 10173)</strong>.</p>
+            <p>We ensure that:</p>
+            <ul>
+                <li>Information is collected and used only for legitimate purposes related to public health services.</li>
+                <li>Data is stored securely with appropriate technical and organizational measures to prevent unauthorized access, disclosure, alteration, or destruction.</li>
+                <li>Individuals have the right to access, correct, and object to the processing of their personal data, subject to legal limitations.</li>
+                <li>Personnel are trained on data privacy principles and responsible data handling practices.</li>
+                <li>Consent is obtained where necessary for data collection and processing.</li>
+            </ul>
+            <p>By registering and using this system, you acknowledge and agree to our adherence to these data privacy principles. For a complete understanding of your rights and our obligations, please refer to our full Data Privacy Policy.</p>
+        </section>
+    </main>
+
+    <div id="services-overlay" style="display: none;">
+        <div id="services" class="services">
+            <h2>Patient Successfully Registered in Our System!</h2>
+            <p>Your Patient ID is: <strong><span id="patientID"></span></strong></p>
+            <a href="#" id="closePopup" class="btn">Close</a>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Municipal Health Information System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./registration.js"></script>
+</body>
+</html>

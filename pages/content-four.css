@@ -1,0 +1,64 @@
+:root {
+  --color-one: #004080;
+  --color-two: #e6f0fa;
+  --color-three: #f2f2f2;
+  --hover-one: #002b59;
+  --hover-two: #cce0f5;
+  --text-color: #222;
+
+  --trans-02: all 0.2s ease;
+  --trans-03: all 0.3s ease;
+  --trans-04: all 0.4s ease;
+  --trans-05: all 0.5s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.content-four {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-one);
+  color: var(--color-three);
+  font-family: "Lalezar", cursive;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.content-four h2 {
+  margin-bottom: 30px;
+  font-size: 50px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 60px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-item i {
+  font-size: 50px;
+  color: var(--color-three);
+}
+
+.contact-item p {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 0;
+  text-align: center;
+  color: var(--color-three);
+}

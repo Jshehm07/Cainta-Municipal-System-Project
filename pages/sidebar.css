@@ -1,0 +1,130 @@
+:root {
+    /* ===== Colors ===== */
+    --color-one: #004080;
+    --color-two: #e6f0fa;
+    --color-three: #f2f2f2 ;
+    --hover-one: #002b59;
+    --hover-two: #cce0f5;
+    --text-color: #222;
+
+    /* ===== Transitions ===== */
+    --trans-02: all 0.2s ease;
+    --trans-03: all 0.3s ease;
+    --trans-04: all 0.4s ease;
+    --trans-05: all 0.5s ease;
+}
+
+/* ===== Menu Button ===== */
+.bx-menu {
+    transition: var(--trans-03);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.bx-menu:hover {
+    background-color: var(--hover-one);
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    position: fixed;
+    top: 8vh;
+    left: 0;
+    width: 240px;
+    height: 100%;
+    padding: 20px;
+    background-color: var(--color-two);
+    border: 5px solid var(--color-one);
+    box-shadow: inset 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+    transform: translateX(-100%);
+    transition: var(--trans-05);
+    z-index: 999;
+    font-family: 'Lato';
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    width: 130%;
+    padding: 5%;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.sidebar .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 190px;
+    border-radius: 6px;
+    padding-left: 10%;
+    transition: var(--trans-03);
+}
+
+.sidebar .container:hover {
+    background-color: var(--hover-two);
+}
+
+.sidebar .container:active {
+    background-color: var(--hover-one);
+    color: var(--color-three); 
+}
+
+.sidebar .container:active i.bx{
+    transition: var(--trans-03);
+    background-color: var(--hover-one);
+    color: var(--color-three);   
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .word {
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+/* ===== Responsive Sidebar ===== */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        top: 7vh;
+        padding: 15px;
+        border-width: 3px;
+    }
+
+    .sidebar a {
+        width: 120%;
+        padding: 4%;
+        font-size: 16px;
+    }
+
+    .sidebar .container {
+        width: 100%;
+        padding-left: 15px;
+    }
+
+    .sidebar .word {
+        font-size: 18px;
+        padding-left: 8px;
+    }
+}

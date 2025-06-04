@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Patient Records</title>
+  <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png" />
+  <link rel="stylesheet" href="./records.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="../images/Cainta-Rizal-Logo.png" alt="Cainta Rizal Logo" style="height: 50px; vertical-align: middle"/>
+      <h1 style="display: inline; margin-left: 10px">Patient Records</h1>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="section-card">
+      <h2>Stored Patient Records</h2>
+      <table id="recordsTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Weight (kg)</th>
+            <th>Height (cm)</th>
+            <th>Date of Birth</th>
+            <th>Allergies</th>
+            <th>Other Allergies</th>
+            <th>Recent Illnesses</th>
+            <th>Other Illnesses</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div style="margin-top: 20px">
+        <a href="#" id="clearPatients" class="btn danger" style="margin-left: 10px">Clear Patient Records</a>
+      </div>
+    </section>
+
+    <section class="section-card" style="margin-top: 40px;">
+      <h2>Scheduled Appointments</h2>
+      <table id="appointmentsTable">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Name / Patient</th>
+            <th>Appointee</th>
+            <th>Phone</th>
+            <th>ID Type</th>
+            <th>Specific</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div style="margin-top: 20px">
+        <a href="#" id="clearAppointments" class="btn danger">Clear Appointment Records</a>
+      </div>
+    </section>
+
+    <div style="text-align: center; margin: 40px 0;">
+      <a href="../index.html" class="btn">Return to Login</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> Municipal Health Information System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+      function renderRecords() {
+        const patients = JSON.parse(localStorage.getItem("patients") || "[]");
+        const tbody = document.querySelector("#recordsTable tbody");
+
+        if (patients.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="10">No patient records found.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = "";
+        patients.forEach((p) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${p.id}</td>
+            <td>${p.patientName}</td>
+            <td>${p.age}</td>
+            <td>${p.weight}</td>
+            <td>${p.height}</td>
+            <td>${p.dob}</td>
+            <td>${(p.allergies || []).join(", ")}</td>
+            <td>${p.other_allergies || "-"}</td>
+            <td>${(p.illnesses || []).join(", ")}</td>
+            <td>${p.other_illnesses || "-"}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      function renderAppointments() {
+        const appointments = JSON.parse(localStorage.getItem("appointments") || "[]");
+        const tbody = document.querySelector("#appointmentsTable tbody");
+
+        if (appointments.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="8">No appointments found.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = "";
+        appointments.forEach((a) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${a.type}</td>
+            <td>${a.name || a.patientName}</td>
+            <td>${a.appointeeName || "-"}</td>
+            <td>${a.phone}</td>
+            <td>${a.idType || "-"}</td>
+            <td>${a.specific}</td>
+            <td>${a.date}</td>
+            <td>${a.time}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      document.getElementById("clearPatients").addEventListener("click", (e) => {
+        e.preventDefault();
+        if (confirm("Are you sure you want to delete all patient records?")) {
+          localStorage.removeItem("patients");
+          renderRecords();
+        }
+      });
+
+      document.getElementById("clearAppointments").addEventListener("click", (e) => {
+        e.preventDefault();
+        if (confirm("Are you sure you want to delete all appointment records?")) {
+          localStorage.removeItem("appointments");
+          renderAppointments();
+        }
+      });
+
+      renderRecords();
+      renderAppointments();
+    });
+  </script>
+</body>
+</html>

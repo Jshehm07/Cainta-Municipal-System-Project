@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --color-one: #004080;
+  --color-two: #e6f0fa;
+  --color-three: #f2f2f2;
+  --hover-one: #002b59;
+  --hover-two: #cce0f5;
+  --text-color: #222;
+
+  --trans-02: all 0.2s ease;
+  --trans-03: all 0.3s ease;
+  --trans-04: all 0.4s ease;
+  --trans-05: all 0.5s ease;
+}
+
+.head {
+  background-color: var(--color-one);
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.head a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.head img {
+  height: 5rem;
+  width: 7rem;
+}
+
+.head p {
+  font-family: 'Lalezar';
+  color: #fff;
+  font-size: 2rem;
+  margin-top: 1.2rem;
+}
+
+.services {
+  max-width: 500px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background-color: #ededed;
+}
+
+.header {
+  font-family: 'Lalezar';
+  font-size: 2rem;
+  text-align: center;
+}
+
+#userDetails input {
+  width: 100%;
+  padding: 8px 10px;
+  margin: 8px 0;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Lato', sans-serif;
+}
+
+#userDetails label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  font-family: 'Lato', sans-serif;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 30px;
+}
+
+.password-wrapper i {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.2rem;
+}
+
+#updateBtn {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.service-button {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  margin-top: 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-one);
+  color: white;
+  cursor: pointer;
+  transition: var(--trans-03);
+  font-family: 'Lato', sans-serif;
+}
+
+.service-button:hover {
+  background-color: var(--hover-one);
+}
+
+.return-home {
+  background-color: #036cd5;
+}
+
+.return-home:hover {
+  background-color: #0250a2;
+}
+
+@media (max-width: 600px) {
+  .head {
+    padding: 0.5rem 1rem;
+  }
+  .head img {
+    height: 4rem;
+    width: auto;
+  }
+  .head p {
+    font-size: 1.5rem;
+    margin-top: 0.8rem;
+  }
+  .services {
+    margin: 2rem 1rem;
+    padding: 2rem 1rem;
+    max-width: 100%;
+  }
+  #userDetails input {
+    font-size: 0.9rem;
+  }
+  .service-button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}

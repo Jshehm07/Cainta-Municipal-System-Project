@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Vaccination Tracker Record</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./vaxD.css">
+
+    </head>
+
+<body>
+    <header class="main-header">   </header>
+
+    <div class="head">
+        <a href="#" target="_self">
+            <img src="../images/Cainta-Rizal-Logo.png" alt="">
+            <p>Municipal of Cainta Rizal</p>
+        </a>
+    </div>
+        
+    
+    <nav><a href="#" target="_self"><button class="dashB "id="main">Back to Homepage</button></a></nav>
+
+    <h2>Vaccine Registration Record</h2>
+    <div class="container"> 
+    <form id="Vax-form">
+        
+        <div class="PersonalInfo">
+            <p class="PinfoParagraph">PERSONAL INFORMATION</p>
+            <label class="label" for="fname">First Name</label>
+            <input class="input" type="text" id="fname" name="fname" placeholder="Juan" required>
+       <br>
+            <label class="label-lname" for="lname">Last Name</label>
+            <input class="input" type="text" id="lname" name="lname" placeholder="Dela Cruz" required>
+           
+        <br>
+    
+            <label class="label" for="age">Age</label>
+            <input class="inputage" type="number" min="0" max="150" id="age" name="age" value="" required>
+        
+        </div>    
+    <br>
+
+        <div class="VaccineForm">
+            <p class="VinfoParagraph">VACCINE INFORMATION</p>
+            <label class="labelbox" for="firstD">1st Dose:
+            <input type="checkbox" id="firstD" name="firstD">
+            <span class="checkmark"></span>
+            </label>
+        
+        <br>
+
+            <label class="label" for="nameV">Name of Vaccine:</label>
+            <select class="input" id="nameV" name="nameV" required disabled>
+                <option value="">-- Select Vaccine --</option>
+                <option value="Pfizer">Pfizer</option>
+                <option value="Moderna">Moderna</option>
+                <option value="AstraZeneca">AstraZeneca</option>
+                <option value="Johnson & Johnson">Johnson & Johnson</option>
+                <option value="Sinovac">Sinovac</option>
+                <option value="Sputnik V">Sputnik V</option>
+             </select>
+
+        <br>
+
+            <label class="label" for="dateV1">Date of Vaccination:</label>
+            <input class="input" type="date" id="dateV1" name="dateV1" required disabled>
+
+        <br>
+
+            <label class="labelbox" for="secondD">2nd Dose:
+            <input type="checkbox" id="secondD" name="secondD" required disabled>
+            <span class="checkmark"></span>
+            </label> 
+        
+        <br>
+
+            <label class="label" for="dateV2">Date of Vaccination:</label>
+            <input class="input" type="date" id="dateV2" name="dateV2" required disabled>
+
+        </div>  
+        <br>
+
+            <button class="buttonSub" type="submit"> Submit </button>
+      
+        <br>
+
+       
+
+    </form>
+    </div>
+
+        <div class="buttonpos">
+
+            <input class="input" type="text" id="search" placeholder="Search">
+            
+
+        <br>
+        
+      <table class="VaxT" id="Vax-table" width="600">
+        <thead>
+        <tr bgcolor="#e6f0fa">
+            <th width="100">First Name</th>
+            <th width="100">Last Name</th>
+            <th width="100">Age</th>
+            <th width="100">Vaccine</th>
+            <th width="100">Date of 1st Dose</th>
+            <th width="100">Date of 2nd Dose</th>
+        </tr>   
+        </thead>
+            <tbody bgcolor="white" align="center"></tbody>
+      </table>
+
+        </div>
+
+        <button class="buttonC" id="clear">Clear Table</button>
+    
+
+    <script>
+const referrer = document.referrer;
+const backButton = document.getElementById('main');
+
+if (referrer.includes('guest.html')) {
+    backButton.onclick = () => window.location.href = './guest.html';
+} else {
+    backButton.onclick = () => window.location.href = './homepage.html';
+}
+
+const form = document.getElementById('Vax-form');
+const tableBody = document.querySelector('#Vax-table tbody');
+let VaxData = JSON.parse(localStorage.getItem('VaxData')) || [];
+
+document.getElementById('clear').addEventListener('click', () => {
+    localStorage.removeItem('VaxData');
+    VaxData = [];
+    renderTable();
+});
+
+document.getElementById('firstD').addEventListener('change', function() {
+    document.getElementById('nameV').disabled = !this.checked;
+    document.getElementById('dateV1').disabled = !this.checked;
+    document.getElementById('secondD').disabled = !this.checked;
+});
+
+document.getElementById('secondD').addEventListener('change', function() {
+    document.getElementById('dateV2').disabled = !this.checked;
+});
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const fname = document.getElementById('fname').value;
+    const lname = document.getElementById('lname').value;
+    const age = document.getElementById('age').value;
+    const nameV = document.getElementById('nameV').value.trim();
+    const dateV1 = document.getElementById('dateV1').value.trim();  
+    const dateV2 = document.getElementById('dateV2').value.trim();
+
+    const newEntry = { fname, lname, age, nameV, dateV1, dateV2 };
+    VaxData.push(newEntry);
+    localStorage.setItem('VaxData', JSON.stringify(VaxData));
+
+    renderTable();
+    form.reset();
+});
+
+function renderTable() {
+    const searchInput = document.getElementById('search').value.toLowerCase();
+    tableBody.innerHTML = '';
+    VaxData.forEach(entry => {
+        const combined = `${entry.fname} ${entry.lname} ${entry.nameV} ${entry.age}`.toLowerCase();
+        if (combined.includes(searchInput)) {
+            const row = `<tr>
+                <td>${entry.fname}</td>
+                <td>${entry.lname}</td>
+                <td>${entry.age}</td>
+                <td>${entry.nameV}</td>
+                <td>${entry.dateV1}</td>
+                <td>${entry.dateV2}</td>
+            </tr>`;
+            tableBody.insertAdjacentHTML('beforeend', row);
+        }
+    });
+}
+
+window.addEventListener('load', renderTable);
+document.getElementById('search').addEventListener('input', renderTable);
+
+document.querySelector(".head").addEventListener("click", function (e) {
+  e.preventDefault();
+  const referrer = document.referrer;
+
+  if (referrer.endsWith("guest.html")) {
+    window.location.href = "./guest.html";
+  } else {
+    window.location.href = "./homepage.html";
+  }
+});
+
+</script>
+
+</body> 
+
+
+</html>
+
+
+<!--    Vaccination Tracker: Cuevas
+
+<a href="dashboard html here" target="_self"><button id="main">Select</button></a>
+
+colors:
+
+004080 Main Accent
+e6f0fa 
+f2f2f2
+333
+
+(FORM)
+
+Register Vaccine record
+
+INPUTS
+
+Name: (FIELD)
+Age:  (FIELD)
+
+1st Dose: (checkbox) (options show below when checked)
+Name of Vaccine: 
+Date of vaccination: (DATE INPUT)
+
+2nd Dose: (checkbox) (options show below when checked)
+Name of Vaccine: 
+Date of vaccination: (DATE INPUT)
+
+
+Look up Vaccine record via Table (table) (filter options)
+Includes Fields from Registration of Record
+
+
+Return to Dashboard (button)
+
+-->

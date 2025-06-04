@@ -1,0 +1,145 @@
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background: #b8cfce;
+  min-height: 100vh;
+}
+
+.logo {
+  width: 80px;
+}
+
+.navigation {
+  margin-left: auto;
+}
+
+.navbar {
+  background-color: #004080;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar h1 {
+  margin: 0;
+  font-family: 'Lalezar', cursive;
+  font-size: 28px;
+}
+
+.navbar nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+  font-family: 'Lato', sans-serif;
+}
+
+.navbar nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 360px;
+  margin: 40px auto;
+}
+
+h2 {
+  font-family: 'Lalezar', cursive;
+  font-size: 32px;
+  color: #333446;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
+}
+
+input, select, button {
+  width: 340px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: 'Lato', sans-serif;
+}
+
+select {
+  width: 100%;
+}
+
+#email, #password {
+  width: 340px;
+}
+
+.hidden {
+  display: none;
+}
+
+.links {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.links a {
+  color: #333446;
+  text-decoration: none;
+  margin: 0 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: #004080;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 360px;
+}
+
+button:hover {
+  background-color: rgb(83, 110, 177);
+}
+
+@media (max-width: 400px) {
+  .navbar {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar nav {
+    margin-top: 10px;
+  }
+
+  .navigation {
+    margin: 0;
+  }
+
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  input, select, button, #email, #password {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}

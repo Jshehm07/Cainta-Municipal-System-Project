@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services Overview - Municipal Health Info System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Lato", sans-serif;
+        background: #b8cfce;
+        color: #333;
+        min-height: 100vh;
+      }
+
+      .logo {
+        width: 80px;
+      }
+
+      .navigation {
+        margin-left: auto;
+      }
+
+      .navbar {
+        background-color: #004080;
+        padding: 15px 30px;
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar .title {
+        font-family: "Lalezar", cursive;
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: bold;
+      }
+
+      .navbar a:hover {
+        text-decoration: underline;
+      }
+
+      .content {
+        max-width: 800px;
+        margin: 80px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-family: "Lalezar", cursive;
+        color: #004080;
+      }
+
+      @media (max-width: 400px) {
+        .navbar {
+          text-align: center;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .navbar nav {
+          margin-top: 10px;
+        }
+
+        .navigation {
+          margin: 0;
+        }
+
+        .container {
+          width: 90%;
+          padding: 20px;
+        }
+
+        input,
+        select,
+        button,
+        #email,
+        #password {
+          width: 100%;
+        }
+
+        button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <img
+        src="./images/Cainta-Rizal-Logo.png"
+        alt="Cainta Rizal Logo"
+        class="logo"
+      />
+      <div class="title">Municipal Health Info System</div>
+      <div class="navigation">
+        <a href="./about-us.html">About Us</a>
+        <a href="./index.html">Log In</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <h1>Services Overview</h1>
+      <p>
+        The <strong>Municipal Health Info System</strong> offers a comprehensive
+        range of digital services designed to support community health
+        management and improve healthcare outcomes.
+      </p>
+      <p>Our key services include:</p>
+      <ul>
+        <li>
+          <strong>Patient Registration:</strong> A simplified digital form to
+          enroll new patients, ensuring that basic personal and health-related
+          data are accurately recorded and securely stored.
+        </li>
+        <li>
+          <strong>Appointment Scheduling:</strong> Allows patients to book
+          appointments for consultations, checkups, and vaccinations to reduce
+          wait times and overcrowding at health centers.
+        </li>
+        <li>
+          <strong>Vaccination Tracking:</strong> Monitors vaccination records,
+          especially for children, pregnant women, and vulnerable groups.
+          Includes alerts for upcoming vaccine schedules.
+        </li>
+        <li>
+          <strong>Medical Records Management:</strong> Provides authorized staff
+          with secure access to patients’ medical history, diagnoses, and
+          treatments—anytime, anywhere.
+        </li>
+        <li>
+          <strong>Health Reports & Statistics:</strong> Automatically generates
+          barangay-level health data, helping administrators to identify trends,
+          outbreaks, and service needs.
+        </li>
+        <li>
+          <strong>Program Updates:</strong> Shares information about upcoming
+          health programs such as feeding initiatives, wellness checks, and
+          medical missions.
+        </li>
+      </ul>
+      <p>
+        All services are designed to comply with local government health
+        protocols and data privacy laws to ensure that citizen health data
+        remains confidential and protected.
+      </p>
+    </div>
+  </body>
+</html>

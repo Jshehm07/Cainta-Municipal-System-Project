@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appointment Scheduler</title>
+  <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+  <link rel="stylesheet" href="./Scheduler.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+ <div class="header">
+  <div class="logo-con">
+    <img src="../images/Cainta-Rizal-Logo.png" alt="Logo" class="logo" />
+    <div class="m-title">Municipal of Cainta Rizal</div>
+  </div>
+</div>
+
+
+  <div class="wrapper">
+    <aside class="sidebar">
+      
+      <div class="profile">
+        <img src="../images/icons/profile.png" alt="Profile" class="profile-icon" />
+        <h3>Name Here</h3>
+      <div class="select-group">
+  <label for="apptType">Check-in Type:</label>
+  <select id="apptType" onchange="toggleForm(this.value)">
+    <option value="client">Client Check-in</option>
+    <option value="others">Other's Check-in</option>
+  </select>
+</div>
+      </div>
+    </aside>
+
+    <div class="calendar">
+      <div class="calendar-inner">
+        <div class="calendar-header">
+          <button class="month-nav" onclick="changeMonth(-1)">❮</button>
+          <h4 id="monthLabel">Month</h4>
+          <button class="month-nav" onclick="changeMonth(1)">❯</button>
+        </div>
+
+        <div class="calendar-grid" id="calendarDays">
+          <div class="calendar-day">SUN</div>
+          <div class="calendar-day">MON</div>
+          <div class="calendar-day">TUE</div>
+          <div class="calendar-day">WED</div>
+          <div class="calendar-day">THU</div>
+          <div class="calendar-day">FRI</div>
+          <div class="calendar-day">SAT</div>
+        </div>
+
+        <div class="calendar-grid" id="calendarDates"></div>
+
+        <label for="timeSelect" style="display:block; margin-top: 20px; font-weight: bold;">Select Time</label>
+        <select id="timeSelect">
+          <option value="">--select a time--</option>
+          <option>10:00 AM</option>
+          <option>11:00 AM</option>
+          <option>1:00 PM</option>
+          <option>2:00 PM</option>
+          <option>3:00 PM</option>
+          <option>4:00 PM</option>
+          <option>5:00 PM</option>
+          <option>6:00 PM</option>
+        </select>
+      </div>
+    </div>
+
+   
+    <div class="right">
+      <form id="client">
+        <label>Name</label>
+        <input type="text" required />
+        <label>Phone Number</label>
+        <input type="tel" required />
+        <label>Appointment Specifics</label>
+        <select required>
+          <option value="">-- Select --</option>
+          <option>Family Doctor</option>
+          <option>Optician</option>
+          <option>Dentist</option>
+          <option>Pediatrician</option>
+          <option>Gynecologist</option>
+        </select>
+        <button type="button" class="button" onclick="shwoThankYou()">Submit</button>
+      </form>
+
+     <form id="others" class="hidden">
+    <label>Patient Name</label>
+    <input type="text" required>
+    <label>Appointee Name</label>
+    <input type="text" required>
+    <label>Phone Number</label>
+    <input type="tel" required>
+    <label>ID Type</label>
+    <input type="text" required>
+    <label>Upload ID Photo</label>
+    <input type="file" accept="image/*" required>
+    <label>Appointment Specifics</label>
+    <select required>
+      <option value="">-- Select --</option>
+      <option>Family Doctor</option>
+      <option>Optician</option>
+      <option>Dentist</option>
+      <option>Pediatrician</option>
+      <option>Gynecologist</option>
+    </select>
+    <button type="button" class="button" onclick="shwoThankYou()">Submit</button>
+  </form>
+  <div id="thankYouOverlay" class="overlay">
+  <div class="thank-you" id="thankYouMessage">
+    <h2>Thank You!</h2>
+    <p>Your appointment has been booked.</p>
+    <p><strong>Ticket Number:</strong> #APT<span id="ticketNumber"></span></p>
+    <button class="button" onclick="redirectBack()">Return to Homepage</button>
+  </div>
+</div>
+     </div>
+    </div>
+  </div>
+
+  <script src="./Scheduler.js"></script>
+</body>
+</html>

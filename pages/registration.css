@@ -1,0 +1,416 @@
+/* General Body and Container Styles */
+:root {
+    /* ===== Colors ===== */
+    --color-one: #004080;
+    --color-two: #e6f0fa;
+    --color-three: #f2f2f2 ;
+    --hover-one: #002b59;
+    --hover-two: #cce0f5;
+    --text-color: #222;
+
+    /* ===== Transitions ===== */
+    --trans-02: all 0.2s ease;
+    --trans-03: all 0.3s ease;
+    --trans-04: all 0.4s ease;
+    --trans-05: all 0.5s ease;
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f2f2f2; /* Light grey background */
+    font-family: 'Lato', sans-serif; /* Primary text font */
+    color: #333; /* Dark grey for body text */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures footer is at bottom */
+}
+
+.logo {
+    width: 150px;
+}
+
+.container {
+    max-width: 900px; /* Adjusted max-width for content */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* Header Styles */
+header {
+    background-color: #004080; /* Dark blue header */
+    color: #fff; /* White text */
+    padding: 1.5rem 0; /* More vertical padding */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.container:hover {
+    cursor: pointer;
+}
+
+main p {
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+header h1 {
+    font-family: 'Lalezar', cursive; /* Distinct font for main title */
+    font-size: 2.8rem; /* Larger font size */
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* Main Content Area */
+main.container {
+    flex-grow: 1; /* Allows main content to grow and push footer down */
+    background-color: #e6f0fa; /* Light blue background for main area */
+    border-radius: 12px; /* More rounded corners */
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+}
+
+/* Section Cards (General styling for sections like registration, privacy, confirmation) */
+.section-card {
+    background-color: #ffffff; /* White background for individual cards */
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.section-card h2, .section-card h3 {
+    font-family: 'Lalezar', cursive; /* Apply distinct font to headings */
+    color: #004080; /* Dark blue for section headings */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+}
+
+.radio {
+    display: flex;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.gender {
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.section-card h3 {
+    font-size: 1.7rem;
+    margin-top: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+/* Form Group Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700; /* Bolder labels */
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc; /* Lighter border */
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="date"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #007bff; /* Highlight on focus */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+/* Radio and Checkbox Styles */
+.form-group input[type="radio"],
+.form-group input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.1); /* Slightly larger checkboxes/radios */
+    vertical-align: middle; /* Align with text */
+}
+
+.form-group .checkbox-label {
+    display: inline-block; /* Keep labels inline with checkboxes */
+    margin-right: 15px; /* Space between options */
+    margin-bottom: 8px; /* Space below if multiple lines */
+    font-weight: normal; /* Override bold label for checkbox text */
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: normal;
+    color: #333;
+}
+
+.privacy-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.privacy-link:hover {
+    text-decoration: underline;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px; /* More rounded buttons */
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #28a745; /* Green for primary action */
+    color: white;
+    width: 100%; /* Full width for the main button */
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Grey for secondary action */
+    color: white;
+    width: auto; /* Allow natural width for secondary buttons */
+    padding: 10px 20px; /* Slightly smaller for secondary */
+    font-size: 16px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Confirmation Section */
+#confirmation {
+    text-align: center;
+    padding: 40px;
+}
+
+#confirmation h2 {
+    color: #28a745; /* Green for success message */
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+#confirmation p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+#patientID {
+    font-weight: 700;
+    color: #004080;
+}
+
+/* Data Privacy Section */
+.data-privacy-section {
+    background-color: #e0f7fa; /* Light teal background */
+    border-left: 6px solid #004080; /* Dark blue left border */
+    padding: 30px;
+    text-align: left; /* Align text to left for readability */
+}
+
+.data-privacy-section h2 {
+    color: #004080;
+    text-align: center; /* Keep heading centered */
+    margin-bottom: 20px;
+}
+
+.data-privacy-section p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.data-privacy-section ul {
+    list-style: none; /* Remove default bullet */
+    padding: 0;
+    margin: 20px 0;
+}
+
+.data-privacy-section ul li {
+    position: relative;
+    padding-left: 35px; /* Space for custom bullet */
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.data-privacy-section ul li::before {
+    content: '\2713'; /* Checkmark symbol */
+    position: absolute;
+    left: 0;
+    color: #28a745; /* Green checkmark */
+    font-weight: bold;
+    font-size: 1.2em;
+    top: 0;
+}
+
+
+/* Footer */
+footer {
+    background-color: #343a40; /* Dark grey footer */
+    color: white;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: auto; /* Pushes footer to the bottom */
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 5px 0;
+    opacity: 0.8;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#services-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.2);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.services {
+  background-color: var(--color-two);
+  border: var(--color-one) solid 8px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  animation: fadeSlideUp 0.5s ease forwards;
+  z-index: 1001;
+}
+
+.services h2 {
+  font-family: 'Lalezar';
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.services a {
+  text-decoration: none;
+  color: var(--color-three);
+  background-color: var(--color-one);
+  font-weight: bold;
+  padding: 20px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  transition: var(--trans-03), transform 0.3s ease;
+  cursor: pointer;
+}
+
+.services a:hover {
+  background-color: var(--hover-one);
+  transform: scale(1.05);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main.container {
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .section-card {
+        padding: 25px;
+    }
+
+    .section-card h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .section-card h3 {
+        font-size: 1.4rem;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    .form-group .checkbox-label {
+        display: block; /* Stack checkboxes on small screens */
+        margin-right: 0;
+    }
+}

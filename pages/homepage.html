@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+    
+    <!-- ====== Font Links ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <!-- ====== Boxicons Link ====== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- ====== CSS Links ====== -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./sidebar.css">
+    <link rel="stylesheet" href="./content-two.css">
+    <link rel="stylesheet" href="./content-three.css">
+    <link rel="stylesheet" href="./content-four.css">
+
+    <!-- ====== JS Link ====== -->
+    <script src="./script.js"></script>
+    
+    <title>Municipal of Cainta Rizal</title>
+</head>
+<body>
+
+    <!-- ======= Top Bar ====== -->
+    <nav class="topbar">
+        <i class='bx bx-menu' id="menu-btn"></i>
+        
+        <!-- ====== Sidebar ====== -->
+        <aside class="sidebar" id="sidebar">
+            <ul>
+                <li><a href="#services"><div class="container"><div class="icon"><i class='bx bx-wrench'></i></div><div class="word">Services</div></div></a></li>  
+                <li><a href="#news"><div class="container"><div class="icon"><i class='bx bx-news'></i></div><div class="word">News/Events</div></div></a></li>
+                <li><a href="#about-us" class="scroller"><div class="container"><div class="icon"><i class='bx bxs-group'></i></div><div class="word">About Us</div></div></a></li>
+                <li><a href="#contact-us"><div class="container"><div class="icon"><i class='bx bx-envelope'></i></div><div class="word">Contact Us</div></div></a></li>
+                <li><a href="./account.html"><div class="container"><div class="icon"><i class='bx bxs-user-account'></i></div><div class="word">Account</div></div></a></li>
+            </ul>
+        </aside>
+
+        <img class="icon" src="../images/Cainta-Rizal-Logo.png" alt="Cainta-Rizal-Logo">
+        <p>Municipal of Cainta Rizal</p>
+
+        <div class="topright">
+            <button class="logout" id="logout">Log Out</button>
+        </div>
+    </nav>
+
+    <!-- ====== Content One ====== -->
+    <div class="content-one">
+        <h1 class="head" >Municipal of Cainta Rizal</h1>
+        <p class="description">
+            The Municipal of Cainta Rizal is ready to <br>
+            serve you for whichever services you need. <br>
+            From medical services that concerns your <br>
+            general health, optics, childrens, dental <br>
+            and pregnancy. You may also view the wonders <br>
+            of our city! 
+        </p>
+        
+        <div class="service-container">
+            <a href="#services" class="service-button">Services</a>
+        </div>
+
+        <div id="services-overlay">
+            <div class="services" id="services">
+                <h2>Choose a Service</h2>
+                <div class="service-option">
+                    <a href="./registration.html">Patient Registration</a>
+                    <a href="./Scheduler.html">Schedule an Appointment</a>
+                    <a href="./vaxtrack.html">Vaccine Tracker</a>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="background">
+        <img class="b-photo" src="../images/Municipal-3.jpg" alt="Photo of the Municipal Building of Cainta Rizal">
+    </div>
+
+    <br>
+
+    <!-- ====== Content-Two ======= -->
+    <div class="content-two" id="news">
+        <h2>Cainta Rizal News</h2>
+
+        <div class="news-container">
+            <div class="news one">
+                <a href="https://philscholar.com/one-cainta-scholarship-program/" target="_blank">
+                    <img src="../images/Scholarship.jpg" alt="">
+                </a>
+            </div>
+            <div class="news two">
+                <a href="https://weareonewalangiwanan.wordpress.com/" target="_blank">
+                    <img src="../images/Relief.jpg" alt="">
+                </a>
+                <a href="https://thepost.net.ph/news/campus/bagong-high-school-building-sa-cainta-floodway/" target="_blank">
+                    <img src="../images/School.jpg" alt="">
+                </a>
+            </div>
+            <div class="news three">
+                <a href="https://www.gmanetwork.com/news/topstories/nation/919203/700-cainta-families-flee-homes-due-to-enteng/story/" target="_blank">
+                    <img src="../images/Flood.jpg" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ====== Content Three ====== -->
+    <div class="content-three" id="about-us">
+        <h2>About the Municipal of Cainta Rizal</h2>
+
+        <div class="government">
+            <div class="mayor">
+                <div class="photo">
+                    <img src="../images/Mayor.png" alt="Mayor of Cainta Rizal">
+                </div>
+                <div class="content">
+                    <h3>Mayor Elen Dungo Nieto</h3>
+                    <p>
+                        Atty. Elen is on her first term as Mayor, having succeeded <br>
+                        her husband in 2022. he was engaged in the practice of law <br>
+                        and was a human resources practitioner o her stint as Mayor. <br>
+                        She holds the distinction of being Cainta’s first female Mayor. 
+                    </p>
+                    <h3>Educational Attainment</h3>
+                    <p>
+                        <ul>
+                            <li>Juris Doctor and Law Graduate at Ateneo de Manila University:<br>1985-1993</li>
+                            <li>Bachelors Degree in Management at Ateneo de Manila University:<br>1985-1993</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="vmayor">
+                <div class="photo">
+                    <img src="../images/Vice Mayor.png" alt="Vice Mayor of Cainta Rizal">
+                </div>
+                <div class="content">
+                    <h3>Vice Mayor Ace Bernardo Servillion</h3>
+                    <p>
+                        Ace Servillon is a two-term Vice Mayor, having served as such <br>
+                        in 2019 with Mayor Keith Nieto, and again in 2022 with Mayor <br>
+                        Elen Nieto.
+                    </p>
+                    <h3>Educational Attainment</h3>
+                    <p>
+                        <ul>
+                            <li>Law Graduate in Manila De La Salle University:<br>1990-1994</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======= Content-Four ======= -->
+
+    <div class="content-four" id="contact-us">
+        <h2>Contact Us</h2>
+
+        <div class="contact-grid">
+            <div class="contact-item">
+                <i class='bx bxs-phone'></i>
+                <p>+1 643 - 456</p>
+            </div>
+            <div class="contact-item">
+                <i class='bx bx-mobile-alt'></i>
+                <p>09113334444</p>
+            </div>
+            <div class="contact-item">
+                <i class='bx bxs-envelope'></i>
+                <p>caintarizal@gov.ph</p>
+            </div>
+            <div class="contact-item">
+                <i class='bx bxs-map'></i>
+                <p>No. 73 A. Bonifacio Ave.,<br> Brgy. Sto. Domingo, Cainta, Rizal, 1900</p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <p>&copy; <span id="currentYear"></span> Municipal Health Information System. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

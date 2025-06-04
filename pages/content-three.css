@@ -1,0 +1,102 @@
+:root {
+    /* ===== Colors ===== */
+    --color-one: #004080;
+    --color-two: #e6f0fa;
+    --color-three: #f2f2f2 ;
+    --hover-one: #002b59;
+    --hover-two: #cce0f5;
+    --text-color: #222;
+
+    /* ===== Transitions ===== */
+    --trans-02: all 0.2s ease;
+    --trans-03: all 0.3s ease;
+    --trans-04: all 0.4s ease;
+    --trans-05: all 0.5s ease;
+}
+
+.content-three {
+    font-family: 'Lato';
+}
+
+.content-three h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin: 50px;
+}
+
+.content-three h2, h3 {
+    font-family: 'Lalezar';
+}
+
+.mayor, .vmayor {
+    display: flex;
+    margin: 5rem;
+    padding: 2rem;
+    flex-wrap: wrap;
+    background-color: var(--color-one);
+    color: var(--color-two);
+    border-radius: 20px;
+    width: 80%;
+    border: var(--text-color) solid 10px;
+    justify-self: center;
+    transition: var(--trans-03);
+}
+
+.mayor:hover, .vmayor:hover {
+    scale: 105%;
+}
+
+.content {
+    margin: 20px 70px;
+    font-size: 23px;
+}
+
+.content p {
+    margin-left: 20px;
+    text-align: justify;
+}
+
+.content li {
+    margin-left: 40px;
+}
+
+.photo img {
+    border-radius: 20px;
+    border: var(--color-two) solid 10px;
+    max-width: 250px;
+    max-height: 250px;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+@media (max-width: 400px) {
+    .mayor, .vmayor {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        margin: 2rem; 
+        width: 90%;  
+        padding: 1rem; 
+    }
+
+    .content {
+        margin: 10px 20px; 
+        font-size: 18px;  
+    }
+
+    .content p, .content li {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .photo img {
+        display: block;
+        margin: 10px auto;
+        width: 100%;
+        max-width: 150px; 
+        height: auto;
+        min-width: unset; 
+        min-height: unset;
+    }
+}
