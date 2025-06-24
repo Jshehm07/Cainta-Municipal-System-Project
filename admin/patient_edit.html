@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+  <title>HealthyCainta.Com</title>
+
+  <!-- ====== Font Links ====== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!-- ====== Boxicons Link ====== -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- ======= CSS Links ======= -->
+  <link rel="stylesheet" href="./edit.css">
+  <link rel="stylesheet" href="../top-foot.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+        <img src="../images/Cainta-Rizal-Logo.png" alt="">
+        <h2>HEALTHY SA CAINTA RIZAL</h2>
+      </div>
+  </header>
+  
+  <h2>Edit Patient</h2>
+  <form id="editPatientForm">
+    <input type="hidden" id="patientId">
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" required><br><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" required><br><br>
+
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" required><br><br>
+
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" required><br><br>
+
+    <label for="dob">Birthday:</label>
+    <input type="date" id="dob" required><br><br>
+
+    <label for="allergies">Allergies:</label>
+    <input type="text" id="allergies"><br><br>
+
+    <label for="illnesses">Illnesses:</label>
+    <input type="text" id="illnesses"><br><br>
+
+    <div class="center">
+      <button type="submit">Update Patient</button>
+      <button type="button" onclick="window.history.back()">Cancel</button>
+    </div>
+  </form>
+
+  <footer>
+      <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      if (!id) {
+        alert("Missing patient ID.");
+        return;
+      }
+
+      fetch(`./php/get_single_patient.php?id=${id}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.patient) {
+            const p = data.patient;
+            document.getElementById("patientId").value = p.id;
+            document.getElementById("name").value = p.name || "";
+            document.getElementById("age").value = p.age || "";
+            document.getElementById("weight").value = p.weight || "";
+            document.getElementById("height").value = p.height || "";
+            document.getElementById("dob").value = p.birth || "";
+            document.getElementById("allergies").value = p.allergies || "";
+            document.getElementById("illnesses").value = p.illness || "";
+          } else {
+            alert("Patient not found.");
+          }
+        })
+        .catch(err => {
+          console.error("Fetch error:", err);
+          alert("Failed to load patient data.");
+        });
+
+      document.getElementById("editPatientForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const updatedData = {
+          id: document.getElementById("patientId").value,
+          name: document.getElementById("name").value.trim(),
+          age: document.getElementById("age").value.trim(),
+          weight: document.getElementById("weight").value.trim(),
+          height: document.getElementById("height").value.trim(),
+          birth: document.getElementById("dob").value.trim(),
+          allergies: document.getElementById("allergies").value.trim(),
+          illness: document.getElementById("illnesses").value.trim()
+        };
+
+        fetch("./php/patient_update.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedData)
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            alert("Patient updated successfully.");
+            window.location.href = "./patients.html";
+          } else {
+            alert("Error: " + data.message);
+          }
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          alert("Update failed.");
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

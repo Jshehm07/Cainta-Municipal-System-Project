@@ -1,0 +1,117 @@
+:root {
+  --color-one: #003468;
+  --color-two: #040405;
+  --color-three: #f2f2f2;
+  --hover-one: #0059b1;
+  --hover-two: #cce0f5;
+  --active: #0075ea;
+  --text-color: #222;
+  --border-radius: 8px;
+  --input-height: 2.5rem;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #e6f0fa;
+  color: var(--text-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin-top: 8rem;
+}
+
+h2 {
+  font-family: 'Lalezar', cursive;
+  font-size: 2rem;
+  color: var(--color-one);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+form {
+  background-color: white;
+  padding: 2rem 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 3rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 98%;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  transition: border-color 0.3s;
+}
+
+select {
+    width: 98%;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--color-one);
+  outline: none;
+}
+
+button[type="submit"],
+button[type="button"] {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 0.75rem;
+}
+
+button[type="submit"] {
+  background-color: var(--color-one);
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--hover-one);
+}
+
+
+button[type="button"] {
+  background-color: #ccc;
+  color: #333;
+}
+
+button[type="button"]:hover {
+  background-color: #bbb;
+}
+
+.center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.topbar h2 {
+    color: var(--color-three);
+    margin-top: 1.5rem;
+}
+
+footer {
+    margin-top: auto;
+}

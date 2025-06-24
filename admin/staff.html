@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+    <title>HealthyCainta.Com</title>
+    
+    <!-- ====== Font Links ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- ====== Boxicons Link ====== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- ====== Header and Footer Link ====== -->
+    <link rel="stylesheet" href="../top-foot.css">
+    <script src="../top-foot.js"></script>
+
+    <!-- ====== CSS Links ====== -->
+    <link rel="stylesheet" href="./tables.css">
+
+    <!-- ====== JS Link ====== -->
+    <script src="../logged-in.js"></script>
+</head>
+<body>
+    <header>
+        <div class="topbar">
+            <img src="../images/Cainta-Rizal-Logo.png" alt="">
+            <h2>HEALTHY SA CAINTA RIZAL</h2>
+        </div>
+        <div class="navbar"> 
+            <i class='bx bx-menu hideOnPC' id="menu-btn"></i>
+            <a href="./staff.html" class="hideOnMobile active padLeft">STAFF</a>
+            <a href="./citizens.html" class="hideOnMobile">CITIZENS</a>
+            <a href="./appointments.html" class="hideOnMobile">APPOINTMENTS</a>
+            <a href="./patients.html" class="hideOnMobile">PATIENTS</a>
+            <a href="./vaccine.html" class="hideOnMobile">VACCINE</a>
+            <a href="./myaccount.html" class="hideOnMobile">MY ACCOUNT</a>
+            <a href="#" class="log showOnLog">LOG OUT</a>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <a href="./staff.html" class="active">STAFF</a>
+            <a href="./citizens.html" class="">CITIZENS</a>
+            <a href="./appointments.html" class="">APPOINTMENTS</a>
+            <a href="./patients.html" class="">PATIENTS</a>
+            <a href="./vaccine.html" class="">VACCINE</a>
+            <a href="./myaccount.html" class="">MY ACCOUNT</a>
+        </div> 
+    </header>
+
+    <div class="records-cont">
+        <h2>STAFF ACCOUNT RECORDS</h2> 
+
+        <input type="text" id="staffSearch" placeholder="Search staff..." style="margin-bottom: 10px; padding: 5px; width: 100%; max-width: 400px;">
+
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>STAFF ID</th>
+                        <th>ROLE</th>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>PASSWORD</th>
+                        <th>ADMIN</th>
+                    </tr>
+                </thead>
+                <tbody id="staff-table-body">
+                    <tr>
+                        <td class="no-data" colspan="6">No existing records from the database</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const searchInput = document.getElementById("staffSearch");
+        const tbody = document.getElementById("staff-table-body");
+        let staffData = [];
+
+        function renderTable(data) {
+            tbody.innerHTML = "";
+
+            if (!data || data.length === 0) {
+            tbody.innerHTML = `<tr><td class="no-data" colspan="6">No matching records found.</td></tr>`;
+            return;
+            }
+
+            data.forEach((staff) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${staff.STAFF_ID}</td>
+                <td>${staff.STAFF_ROLE}</td>
+                <td>${staff.STAFF_NAME}</td>
+                <td>${staff.STAFF_EMAIL}</td>
+                <td>${staff.STAFF_PSWD}</td>
+                <td><a href="staff_edit.html?id=${staff.STAFF_ID}&name=${encodeURIComponent(staff.STAFF_NAME)}&email=${encodeURIComponent(staff.STAFF_EMAIL)}&password=${encodeURIComponent(staff.STAFF_PSWD)}&role=${staff.STAFF_ROLE}">Edit</a></td>
+            `;
+            tbody.appendChild(row);
+            });
+        }
+
+        fetch("../admin/php/get_staff.php")
+            .then((res) => res.json())
+            .then((data) => {
+            if (!data.success || data.data.length === 0) {
+                renderTable([]);
+                return;
+            }
+
+            staffData = data.data;
+            renderTable(staffData);
+            })
+            .catch((err) => {
+            console.error("Failed to fetch staff data:", err);
+            });
+
+        searchInput.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase();
+            const filtered = staffData.filter((staff) =>
+            Object.values(staff).some((val) =>
+                String(val).toLowerCase().includes(query)
+            )
+            );
+            renderTable(filtered);
+        });
+        });
+    </script>
+</body>
+</html>

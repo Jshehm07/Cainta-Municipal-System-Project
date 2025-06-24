@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png" />
+  <title>HealthyCainta.Com</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../top-foot.css" />
+  <script src="../top-foot.js"></script>
+  <link rel="stylesheet" href="./tables.css" />
+  <script src="../logged-in.js"></script>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <img src="../images/Cainta-Rizal-Logo.png" alt="" />
+      <h2>HEALTHY SA CAINTA RIZAL</h2>
+    </div>
+    <div class="navbar">
+      <i class="bx bx-menu hideOnPC" id="menu-btn"></i>
+      <a href="./staff.html" class="hideOnMobile padLeft">STAFF</a>
+      <a href="./citizens.html" class="hideOnMobile active">CITIZENS</a>
+      <a href="./appointments.html" class="hideOnMobile">APPOINTMENTS</a>
+      <a href="./patients.html" class="hideOnMobile">PATIENTS</a>
+      <a href="./vaccine.html" class="hideOnMobile">VACCINE</a>
+      <a href="./myaccount.html" class="hideOnMobile">MY ACCOUNT</a>
+      <a href="#" class="log showOnLog">LOG OUT</a>
+    </div>
+    <div class="sidebar" id="sidebar">
+      <a href="./staff.html">STAFF</a>
+      <a href="./citizens.html" class="active">CITIZENS</a>
+      <a href="./appointments.html">APPOINTMENTS</a>
+      <a href="./patients.html">PATIENTS</a>
+      <a href="./vaccine.html">VACCINE</a>
+      <a href="./myaccount.html">MY ACCOUNT</a>
+    </div>
+  </header>
+
+  <div class="records-cont">
+    <h2>CITIZEN ACCOUNT RECORDS</h2>
+
+    <input type="text" id="citizenSearch" placeholder="Search citizens..." style="margin-bottom: 10px; padding: 5px; width: 100%; max-width: 400px;">
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>CITIZEN ID</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>PASSWORD</th>
+            <th>ADMIN</th>
+          </tr>
+        </thead>
+        <tbody id="staff-table-body">
+          <tr>
+            <td class="no-data" colspan="5">No existing records from the database</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tableBody = document.getElementById("staff-table-body");
+      const searchInput = document.getElementById("citizenSearch");
+      let citizenData = [];
+
+      function renderTable(data) {
+        tableBody.innerHTML = "";
+
+        if (data.length === 0) {
+          tableBody.innerHTML = `<tr><td class="no-data" colspan="5">No matching records found</td></tr>`;
+          return;
+        }
+
+        data.forEach(row => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${row.CITIZEN_ID}</td>
+            <td>${row.CITIZEN_NAME}</td>
+            <td>${row.CITIZEN_EMAIL}</td>
+            <td>${row.CITIZEN_PSWD}</td>
+            <td><a href="./citizen_edit.html?id=${row.CITIZEN_ID}&name=${encodeURIComponent(row.CITIZEN_NAME)}&email=${encodeURIComponent(row.CITIZEN_EMAIL)}&password=${encodeURIComponent(row.CITIZEN_PSWD)}">Edit</a></td>
+          `;
+          tableBody.appendChild(tr);
+        });
+      }
+
+      fetch("../admin/php/get_citizen.php")
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.data.length > 0) {
+            citizenData = data.data;
+            renderTable(citizenData);
+          } else {
+            renderTable([]);
+          }
+        })
+        .catch(err => {
+          console.error("Error loading citizen data:", err);
+        });
+
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        const filtered = citizenData.filter(row =>
+          Object.values(row).some(val =>
+            String(val).toLowerCase().includes(query)
+          )
+        );
+        renderTable(filtered);
+      });
+    });
+  </script>
+</body>
+</html>

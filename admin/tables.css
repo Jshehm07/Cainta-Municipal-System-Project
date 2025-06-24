@@ -1,0 +1,124 @@
+:root {
+   
+    --color-one: #003468;
+    --color-two: #040405;
+    --color-three: #f2f2f2 ;
+    --hover-one: #0059b1;
+    --hover-two: #cce0f5;
+    --active: #0075ea;
+    --text-color: #222;
+
+   
+    --trans-02: all 0.2s ease;
+    --trans-03: all 0.3s ease;
+    --trans-04: all 0.4s ease;
+    --trans-05: all 0.5s ease;
+}
+
+body {
+    margin-top: 10rem;
+    background-color: #e6f0fa;
+}
+
+.padLeft {
+    margin-left: 2rem;
+}
+
+
+.records-cont {
+    background-color: #ffffff;
+    justify-self: center;
+    width: 80%;
+    padding: 2rem;
+    padding-bottom: 50vh;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px gray;
+    margin: 3rem;
+    text-align: center;
+} 
+
+.records-cont > h2 {
+    font-family: 'Lalezar';
+    font-size: clamp(3rem, 3vw, 6rem);;
+}
+
+.records-cont > table {
+    font-family: 'Lato';
+    font-size: 1.25rem;
+    width: 80%;
+    justify-self: center;
+    border-collapse: collapse;
+}
+
+.records-cont thead {
+    background-color: var(--color-one);
+    color:  var(--color-three);
+    height: 3rem; 
+}
+
+table tbody {
+    background-color: #f3f3f3;
+}
+
+.records-cont td {
+    background-color: #e6f0fa;             
+    color: var(--text-color);              
+    border: 1px solid var(--text-color);   
+    padding: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.records-cont th {
+    border: 1px solid var(--text-color);   
+    padding: 0.5rem;
+}
+
+.table-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-scroll {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.table-scroll table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Lato';
+    font-size: 1.25rem;
+    min-width: 600px; 
+}
+
+@media (max-width: 768px) {
+    .records-cont > h2 {
+        font-size: 2.5rem;
+    }
+
+    .records-cont {
+        width: 95%;
+        padding: 1rem;
+        padding-bottom: 50vh;
+        margin: 1.5rem auto;
+    }
+
+    .table-scroll table {
+        font-size: 1rem;
+    }
+
+    .padLeft {
+        margin-left: 1rem;
+    }
+
+    header a {
+        font-size: 1rem;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}

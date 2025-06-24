@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+    <title>HealthyCainta.Com</title>
+    
+    <!-- ====== Font Links ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- ====== Boxicons Link ====== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- ====== Header and Footer Link ====== -->
+    <link rel="stylesheet" href="../top-foot.css">
+    <script src="../top-foot.js"></script>
+
+    <!-- ====== CSS Links ====== -->
+    <link rel="stylesheet" href="./tables.css">
+
+    <!-- ====== JS Link ====== -->
+    <script src="../logged-in.js"></script>
+</head>
+<body>
+    <header>
+        <div class="topbar">
+            <img src="../images/Cainta-Rizal-Logo.png" alt="">
+            <h2>HEALTHY SA CAINTA RIZAL</h2>
+        </div>
+        <div class="navbar"> 
+            <i class='bx bx-menu hideOnPC' id="menu-btn"></i>
+            <a href="./staff.html" class="hideOnMobile padLeft">STAFF</a>
+            <a href="./citizens.html" class="hideOnMobile">CITIZENS</a>
+            <a href="./appointments.html" class="hideOnMobile active">APPOINTMENTS</a>
+            <a href="./patients.html" class="hideOnMobile">PATIENTS</a>
+            <a href="./vaccine.html" class="hideOnMobile">VACCINE</a>
+            <a href="./myaccount.html" class="hideOnMobile">MY ACCOUNT</a>
+            <a href="#" class="log showOnLog">LOG OUT</a>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <a href="./staff.html" class="">STAFF</a>
+            <a href="./citizens.html" class="">CITIZENS</a>
+            <a href="./appointments.html" class="active">APPOINTMENTS</a>
+            <a href="./patients.html" class="">PATIENTS</a>
+            <a href="./vaccine.html" class="">VACCINE</a>
+            <a href="./myaccount.html" class="">MY ACCOUNT</a>
+        </div> 
+    </header>
+
+    <div class="records-cont">
+        <h2>APPPOINTMENTS ACCOUNT RECORDS</h2> 
+
+        <input type="text" id="aptSearch" placeholder="Search appointments..." style="margin-bottom: 10px; padding: 5px; width: 100%; max-width: 400px;"  oninput="filterAppointments()">
+
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>APT ID</th>
+                        <th>NAME</th>
+                        <th>APPOINTEE</th>
+                        <th>PHONE</th>
+                        <th>ID</th>
+                        <th>SPECIFICS</th>
+                        <th>DATE</th>
+                        <th>TIME</th>
+                        <th>ADMIN</th>
+                    </tr>
+                </thead>
+                <tbody id="staff-table-body">
+                    <tr>
+                        <td class="no-data" colspan="9">No existing records from the database</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        fetch("./php/get_all_apt.php")
+            .then(res => res.json())
+            .then(data => {
+            const tableBody = document.getElementById("staff-table-body");
+            tableBody.innerHTML = "";
+
+            if (data.success && Array.isArray(data.records) && data.records.length > 0) {
+                data.records.forEach(row => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${row.APT_ID || ''}</td>
+                    <td>${row.APT_NAME || ''}</td>
+                    <td>${row.APT_APPOINTEE || '-'}</td>
+                    <td>${row.APT_PHONE || ''}</td>
+                    <td>${row.APT_IDENTIFICATION || '-'}</td>
+                    <td>${row.APT_SPECIFICS || ''}</td>
+                    <td>${row.APT_DATE || ''}</td>
+                    <td>${row.APT_TIME || ''}</td>
+                    <td><a href="apt_edit.html?id=${row.APT_ID}" class="edit-btn">Edit</a></td>
+                `;
+                tableBody.appendChild(tr);
+                });
+            } else {
+                tableBody.innerHTML = `<tr><td class="no-data" colspan="9">No appointment records found.</td></tr>`;
+            }
+            })
+            .catch(error => {
+            console.error("Error fetching appointment data:", error);
+            const tableBody = document.getElementById("staff-table-body");
+            tableBody.innerHTML = `<tr><td class="no-data" colspan="9">Error loading records.</td></tr>`;
+            });
+        });
+
+        function filterAppointments() {
+            const searchTerm = document.getElementById("aptSearch").value.toLowerCase();
+            const rows = document.querySelectorAll("#staff-table-body tr");
+
+            rows.forEach(row => {
+                const cells = Array.from(row.querySelectorAll("td"));
+                const rowText = cells.map(cell => cell.textContent.toLowerCase()).join(" ");
+                row.style.display = rowText.includes(searchTerm) ? "" : "none";
+            });
+        }
+    </script>
+
+</body>
+</html>

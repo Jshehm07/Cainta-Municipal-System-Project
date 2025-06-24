@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+    <title>HealthyCainta.Com</title>
+    
+    <!-- ====== Font Links ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- ====== Boxicons Link ====== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- ======= CSS Links ======= -->
+    <link rel="stylesheet" href="./edit.css">
+    <link rel="stylesheet" href="../top-foot.css">
+</head>
+<body>
+    <header>
+        <div class="topbar">
+            <img src="../images/Cainta-Rizal-Logo.png" alt="">
+            <h2>HEALTHY SA CAINTA RIZAL</h2>
+        </div>
+    </header>
+
+    <h2>Edit Appointment</h2>
+
+    <form id="editAppointmentForm">
+        <input type="hidden" id="APT_ID" />
+
+        <label for="APT_NAME">Patient Name</label>
+        <input type="text" id="APT_NAME" required><br><br>
+
+        <label for="APT_APPOINTEE">Appointee Name</label>
+        <input type="text" id="APT_APPOINTEE"><br><br>
+
+        <label for="APT_PHONE">Phone Number</label>
+        <input type="text" id="APT_PHONE" required><br><br>
+
+        <label for="APT_IDENTIFICATION">ID Type</label>
+        <input type="text" id="APT_IDENTIFICATION"><br><br>
+
+        <label for="APT_SPECIFICS">Appointment Specifics</label>
+        <input type="text" id="APT_SPECIFICS" required><br><br>
+
+        <label for="APT_DATE">Appointment Date</label>
+        <input type="date" id="APT_DATE" required><br><br>
+
+        <label for="APT_TIME">Appointment Time</label>
+        <input type="time" id="APT_TIME" required><br><br>
+
+        <div class="center">
+        <button type="submit">Update Appointment</button>
+        <button type="button" onclick="window.history.back()">Cancel</button>
+        </div>
+    </form>
+
+    <footer>
+        <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get("id");
+
+            fetch(`./php/get_apt.php?id=${id}`)
+                .then(res => res.json())
+                .then(data => {
+                if (data.success) {
+                    const apt = data.data;
+                    for (let key in apt) {
+                    if (document.getElementById(key)) {
+                        document.getElementById(key).value = apt[key];
+                    }
+                    }
+                } else {
+                    alert("Appointment not found.");
+                    window.history.back();
+                }
+                });
+
+            document.getElementById("editAppointmentForm").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const payload = {
+                APT_ID: document.getElementById("APT_ID").value,
+                APT_NAME: document.getElementById("APT_NAME").value.trim(),
+                APT_APPOINTEE: document.getElementById("APT_APPOINTEE").value.trim(),
+                APT_PHONE: document.getElementById("APT_PHONE").value.trim(),
+                APT_IDENTIFICATION: document.getElementById("APT_IDENTIFICATION").value.trim(),
+                APT_SPECIFICS: document.getElementById("APT_SPECIFICS").value.trim(),
+                APT_DATE: document.getElementById("APT_DATE").value,
+                APT_TIME: document.getElementById("APT_TIME").value,
+                };
+
+                fetch("./php/apt_update.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+                })
+                .then(res => res.json())
+                .then(response => {
+                if (response.success) {
+                    alert("Appointment updated successfully.");
+                    window.location.href = "./appointments.html";
+                } else {
+                    alert("Update failed: " + response.message);
+                }
+                })
+                .catch(err => {
+                console.error("Error:", err);
+                alert("Failed to update appointment.");
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+    <title>HealthyCainta.Com</title>
+    
+    <!-- ====== Font Links ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- ====== Boxicons Link ====== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- ======= CSS Links ======= -->
+    <link rel="stylesheet" href="./edit.css">
+    <link rel="stylesheet" href="../top-foot.css">
+</head>
+<body>
+    <header>
+      <div class="topbar">
+          <img src="../images/Cainta-Rizal-Logo.png" alt="">
+          <h2>HEALTHY SA CAINTA RIZAL</h2>
+        </div>
+    </header>
+
+  <h2>Edit Vaccine Record</h2>
+  <form id="editVaccineForm">
+    <input type="hidden" id="VACCINE_ID" />
+
+    <label>First Name</label>
+    <input type="text" id="VACCINE_F_NAME" required />
+
+    <label>Last Name</label>
+    <input type="text" id="VACCINE_L_NAME" required />
+
+    <label>Age</label>
+    <input type="number" id="VACCINE_AGE" min="0" max="150" required />
+
+    <label>Vaccine Name</label>
+    <input type="text" id="VACCINE_V_NAME" required />
+
+    <label>1st Dose Date</label>
+    <input type="date" id="VACCINE_F_DOSE" />
+
+    <label>2nd Dose Date</label>
+    <input type="date" id="VACCINE_S_DOSE" />
+
+    <div class="center">
+      <button type="submit">Update</button>
+      <button type="button" onclick="window.history.back()">Cancel</button>
+    </div>
+  </form>
+
+    <footer>
+        <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+    </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    fetch(`./php/get_vaccine.php?id=${id}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          const v = data.record;
+          document.getElementById("VACCINE_ID").value = v.VACCINE_ID;
+          document.getElementById("VACCINE_F_NAME").value = v.VACCINE_F_NAME;
+          document.getElementById("VACCINE_L_NAME").value = v.VACCINE_L_NAME;
+          document.getElementById("VACCINE_AGE").value = v.VACCINE_AGE;
+          document.getElementById("VACCINE_V_NAME").value = v.VACCINE_V_NAME;
+          document.getElementById("VACCINE_F_DOSE").value = v.VACCINE_F_DOSE || "";
+          document.getElementById("VACCINE_S_DOSE").value = v.VACCINE_S_DOSE || "";
+        } else {
+          alert(data.message);
+        }
+      });
+
+    document.getElementById("editVaccineForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const formData = {
+        VACCINE_ID: document.getElementById("VACCINE_ID").value,
+        VACCINE_F_NAME: document.getElementById("VACCINE_F_NAME").value.trim(),
+        VACCINE_L_NAME: document.getElementById("VACCINE_L_NAME").value.trim(),
+        VACCINE_AGE: document.getElementById("VACCINE_AGE").value,
+        VACCINE_V_NAME: document.getElementById("VACCINE_V_NAME").value.trim(),
+        VACCINE_F_DOSE: document.getElementById("VACCINE_F_DOSE").value || null,
+        VACCINE_S_DOSE: document.getElementById("VACCINE_S_DOSE").value || null,
+      };
+
+      fetch("./php/vaccine_update.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("Vaccine record updated successfully.");
+          window.location.href = "./vaccine.html";
+        } else {
+          alert("Update failed: " + data.message);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

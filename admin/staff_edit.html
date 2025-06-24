@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+    <title>HealthyCainta.Com</title>
+    
+    <!-- ====== Font Links ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- ====== Boxicons Link ====== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- ======= CSS Links ======= -->
+    <link rel="stylesheet" href="./edit.css">
+    <link rel="stylesheet" href="../top-foot.css">
+</head>
+<body>
+    <header>
+      <div class="topbar">
+          <img src="../images/Cainta-Rizal-Logo.png" alt="">
+          <h2>HEALTHY SA CAINTA RIZAL</h2>
+        </div>
+    </header>
+    <h2>Edit Staff Member</h2>
+
+    <form id="editStaffForm">
+        <input type="hidden" id="staffId" name="staffId" />
+
+        <label for="name">Full Name:</label><br />
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" name="password" required /><br /><br />
+
+        <label for="role">Role:</label><br />
+        <select id="role" name="role" required>
+        <option value="admin">Admin</option>
+        <option value="clerk">Clerk</option>
+        <option value="nurse">Nurse</option>
+        </select><br /><br />
+
+        <div class="center">
+            <button type="submit">Update Staff</button>
+            <button type="button" onclick="window.history.back()">Cancel</button>
+        </div>
+    </form>
+
+    <footer>
+        <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get("id");
+            const name = urlParams.get("name");
+            const email = urlParams.get("email");
+            const password = urlParams.get("password");
+            const role = urlParams.get("role");
+
+            if (id) {
+            document.getElementById("staffId").value = id;
+            document.getElementById("name").value = name || "";
+            document.getElementById("email").value = email || "";
+            document.getElementById("password").value = password || "";
+            document.getElementById("role").value = role || "clerk";
+            }
+
+            document.getElementById("editStaffForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const staffData = {
+                id: document.getElementById("staffId").value,
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                password: document.getElementById("password").value.trim(),
+                role: document.getElementById("role").value
+            };
+
+            if (!staffData.name || !staffData.email || !staffData.password || !staffData.role) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            fetch("../admin/php/staff_update.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(staffData)
+            })
+                .then(res => res.json())
+                .then(data => {
+                if (data.success) {
+                    alert("Staff updated successfully.");
+                    window.location.href = "./staff.html";
+                } else {
+                    alert("Error: " + data.message);
+                }
+                })
+                .catch(err => {
+                console.error(err);
+                alert("Failed to connect to the server.");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
