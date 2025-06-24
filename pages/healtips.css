@@ -1,0 +1,284 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #e6f0fa;
+  color: black;
+  line-height: 1.5;
+  min-height: 100vh;
+  text-align: left;
+  margin-top: 7.2rem;
+}
+
+.container h2 {
+  text-align: center;
+  font-family: 'Lalezar', cursive;
+  color: #004080;
+  margin: 40px 0 20px;
+  font-size: 2.5em;
+}
+
+h3 {
+  font-family: 'Lalezar', cursive;
+  font-size: 2em;
+  text-align: left;
+}
+
+.card-image {
+  width: 35%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 auto 1px auto;
+  display: block;
+}
+
+.container {
+  padding: 20px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.columns-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.column-1,
+.column-2,
+.column-3 {
+  text-align: left;
+  padding: 20px;
+}
+
+.column-1 {
+  background-color: #C7E3FF;
+}
+
+.column-2 {
+  background-color: transparent;
+  padding: 30px 20px;
+  min-height: 500px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.column-3 {
+  background-color: #C7E3FF;
+}
+
+.column-large {
+  flex: 2 1 600px;
+  min-height: 600px;
+}
+
+.cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.cards-row .card {
+  width: 320px;
+  height: 400px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  text-align: left;
+}
+
+.cards-row .card p,
+.cards-row .card li {
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+.cards-row .card ul {
+  padding-left: 20px;
+}
+
+.card.dark {
+  background-color: #004080;
+  color: white;
+}
+
+.card.dark h3 {
+  color: #ffffff;
+}
+
+.card.light {
+  background-color: #f0f4f8;
+  color: #004080;
+}
+
+.card.light h3 {
+  color: #004080;
+}
+.column-1 .card {
+  align-items: center;
+  text-align: center;
+}
+.column-3 .card {
+  align-items: center;
+  
+}
+
+
+
+.hotline-button {
+  display: block;
+  margin: 20px auto 40px;
+  padding: 12px 28px;
+  background-color: #004080;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s;
+}
+
+.hotline-button:hover {
+  background-color: #013263;
+}
+
+.disaster-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+
+.disaster-grid .card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: left;
+  height: auto;
+  min-height: 320px;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.disaster-grid .card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.disaster-grid .card-text {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  justify-content: center;
+  height: 100%;
+}
+
+.disaster-grid .card-text h3 {
+  color: #ffffff;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.disaster-grid .card-text ul {
+  padding-left: 20px;
+  font-size: 1.07em;
+  line-height: 1.5;
+}
+
+.disaster-grid .card-text ul li {
+  margin-bottom: 6px;
+}
+
+.column-2 .disaster-grid .card-text ul li {
+  font-size: 1.3em;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.disaster-grid .full-width {
+  grid-column: span 2;
+}
+
+.column-3 .cards-row .card {
+  width: 360px;
+  height: 440px;
+}
+
+.column-3 .cards-row .card li,
+.column-3 .cards-row .card p {
+  font-size: 1.3em;
+}
+.divider {
+  display: block;
+  margin: 1px auto 1px;
+  height: 7px;
+  width: 100%;
+  background-color: #004080;
+  border: none;
+  border-radius: 2px;
+  max-width: 100%;
+}
+
+@media (max-width: 700px) {
+  .disaster-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .disaster-grid .full-width {
+    grid-column: span 1;
+  }
+
+  .cards-row .card {
+    width: 100%;
+  }
+
+  .columns-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .column-2 {
+    padding: 20px 10px;
+  }
+
+  .disaster-grid .card {
+    height: auto;
+  }
+}
+
+
+

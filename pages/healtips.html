@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="healtips.css">
+  <title>HealthyCainta.Com</title>
+  <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png" />
+
+  <!-- ====== Font Links ====== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!-- ====== Boxicons Link ====== -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- ====== Header and Footer Link ====== -->
+  <link rel="stylesheet" href="../top-foot.css">
+  <script src="../logged-in.js" defer></script>
+  <script src="../top-foot.js"></script>
+</head>
+<body>
+
+  <header>
+        <div class="topbar">
+            <img src="../images/Cainta-Rizal-Logo.png" alt="">
+            <h2>HEALTHY SA CAINTA RIZAL</h2>
+        </div>
+        <div class="navbar"> 
+            <i class='bx bx-menu' id="menu-btn"></i>
+            <a href="../index.html" class="hideOnMobile">HOME</a>
+            <a href="../pages/newsfeed.html" class="hideOnMobile">NEWS</a>
+            <a href="#" class="hideOnMobile">HOTLINES</a>
+            <a href="../pages/FAQs.html" class="hideOnMobile">FAQs</a>
+            <a href="../pages/login.html" class="log hideOnLog">LOG IN</a>
+            <a href="#" class="log showOnLog">LOG OUT</a>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <a href="../index.html" class="hideOnPC">HOME</a>
+            <a href="../pages/newsfeed.html" class="hideOnPC">NEWS</a>
+            <a href="#" class="hideOnPC active">HOTLINES</a>
+            <a href="../pages/Scheduler.html">SCHEDULE AN APPOINTMENT</a>
+            <a href="../pages/registration.html">PATIENT REGISTRATION</a>
+            <a href="../pages/vaxtrack.html">VACCINE TRACKER</a>
+            <a href="../pages/DLForms.html">FORMS</a>
+            <a href="../pages/healtips.html" class="active">HEALTIPS</a>
+            <a href="../myaccount.html" class="showOnLog">ACCOUNT</a>
+        </div>
+    </header>
+  
+  <div class="column-1">
+    <div class="container">
+      <h2>COMMON EMERGENCIES: WHAT TO DO</h2>
+      <div class="cards-row">
+        <div class="card dark">
+         <img src="../images/heat.png" alt="Lifestyle" class="card-image">
+          <h3>Heatstroke</h3>
+          <p>Move to a shaded or air-conditioned room.</p>
+          <p>Remove excess clothing.</p>
+          <p>Cool the person with wet cloths or a bath.</p>
+          <p>Call emergency services.</p>
+        </div>
+        <div class="card light">
+        <img src="../images/man-heartattack.png" alt="Lifestyle" class="card-image">
+          <h3>Heart Attack</h3>
+          <p>Call emergency services.</p>
+          <p>Help the person sit comfortably.</p>
+          <p>Provide aspirin if available (unless allergic).</p>
+          <p>Begin CPR if unresponsive and not breathing.</p>
+        </div>
+        <div class="card dark">
+        <img src="../images/faint.png" alt="Lifestyle" class="card-image">
+          <h3>Sudden Fainting</h3>
+          <p>Lay the person down and elevate legs.</p>
+          <p>Check breathing and pulse.</p>
+          <p>Loosen tight clothing.</p>
+          <p>Seek medical help if unconscious for more than 2-3 minutes.</p>
+        </div>
+      </div>
+      <button class="hotline-button">CHECK OUT HOTLINES</button>
+    </div>
+  </div>
+
+   <hr class="divider" />
+  
+  <div class="column-2 column-large">
+    <div class="container">
+      <h2>DISASTER READY? READY!</h2>
+      <div class="disaster-grid">
+    
+        <div class="card" style="background-image: url('../images/Earthquake-BG.png');">
+          <div class="card-text">
+            <h3>Earthquake</h3>
+            <ul>
+              <li>Drop, cover, and hold under sturdy furniture.</li>
+              <li>Stay away from windows and outside walls.</li>
+              <li>Check for injuries and evacuate if necessary.</li>
+            </ul>
+          </div>
+        </div>
+
+       
+        <div class="card" style="background-image: url('../images/Tsunami-BG.png');">
+          <div class="card-text">
+            <h3>Tsunami</h3>
+            <ul>
+              <li>If you feel a strong coastal earthquake, evacuate immediately.</li>
+              <li>Do not wait for a warning siren.</li>
+              <li>Stay tuned to emergency radios or official sources.</li>
+            </ul>
+          </div>
+        </div>
+
+      
+        <div class="card full-width" style="background-image: url('../images/Flood-BG.png');">
+          <div class="card-text">
+            <h3>Flash Flooding</h3>
+            <ul>
+              <li>Move to higher ground without delay.</li>
+              <li>Avoid walking or driving through floodwaters — 6 inches can knock you down.</li>
+              <li>Listen to weather alerts and evacuation notices.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+     
+  <hr class="divider" />
+
+  <div class="column-3 column-large">
+    <div class="container">
+      <h2>LIFESTYLE TIPS TO TAKE CARE OF YOURSELF</h2>
+      <div class="cards-row">
+        <div class="card dark">
+          <h3>Daily Health Tips</h3>
+           <img src="../images/healthtips.png" alt="Lifestyle" class="card-image">
+          <ul>
+            <li>Hydrate: Aim for 6–8 glasses of water a day.</li>
+            <li>Get 7–9 hours of sleep.</li>
+            <li>Eat balanced meals, including fruits & veggies.</li>
+            <li>Exercise at least 30 mins a day.</li>
+          </ul>
+        </div>
+        <div class="card light">
+          <h3>Mental Wellness</h3>
+          <img src="../images/mh2.png" alt="Lifestyle" class="card-image">
+          <ul>
+            <li>Talk about your feelings.</li>
+            <li>Take breaks and get enough rest.</li>
+            <li>Reach out if you’re feeling sad or anxious.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+        <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+    </footer>
+
+</body>
+</html>
