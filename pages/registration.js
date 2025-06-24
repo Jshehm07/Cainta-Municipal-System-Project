@@ -5,123 +5,100 @@ document.addEventListener("DOMContentLoaded", () => {
   const patientIDDisplay = document.getElementById("patientID");
   const confirmation = document.getElementById("confirmation");
 
-  // Show current year in footer
-  document.getElementById("currentYear").textContent = new Date().getFullYear();
+  const yearEl = document.getElementById("currentYear");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    const requiredInputs = Array.from(
+      form.querySelectorAll("input[required], select[required]")
+    ).filter(
+      (input) => input.name !== "allergies" && input.name !== "illnesses"
+    );
 
-    // --- Validation for required inputs excluding allergies and illnesses ---
-    const requiredInputs = Array.from(form.querySelectorAll("input[required], select[required]"))
-      .filter(input => input.name !== "allergies" && input.name !== "illnesses");
-
-    let allRequiredFilled = true;
-
-    for (const input of requiredInputs) {
-      if (input.type === "radio") {
-        const radios = form.querySelectorAll(`input[name="${input.name}"]`);
-        const anyChecked = [...radios].some(radio => radio.checked);
-        if (!anyChecked) {
-          allRequiredFilled = false;
-          break;
-        }
-      } else if (input.type === "checkbox") {
-        if (!input.checked) {
-          allRequiredFilled = false;
-          break;
-        }
-      } else {
-        if (!input.value || input.value.trim() === "") {
-          allRequiredFilled = false;
-          break;
-        }
+    const allFilled = requiredInputs.every((input) => {
+      if (input.type === "checkbox" || input.type === "radio") {
+        return (
+          form.querySelectorAll(`input[name="${input.name}"]:checked`).length >
+          0
+        );
       }
+      return input.value.trim() !== "";
+    });
+
+    if (!allFilled) {
+      alert("Please fill in all required fields.");
+      return;
     }
 
-    if (!allRequiredFilled) {
-      // alert("Please fill in all required fields.");  <-- removed alert here
-      return; // stop submit silently
-    }
-
-    // --- Optional Email validation if email field exists ---
     const emailField = form.querySelector("#email");
     if (emailField && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
       alert("Invalid email address format.");
       return;
     }
 
-    // --- Optional Phone validation if contact number field exists ---
     const phoneField = form.querySelector("#ContactNo");
     if (phoneField && !/^(09|\+639)\d{9}$/.test(phoneField.value)) {
       alert("Invalid Philippine contact number format.");
       return;
     }
 
-    // --- Collect form data ---
     const formData = new FormData(form);
-    const dataObj = {};
 
-    ["patientName", "age", "weight", "height", "dob", "other_allergies", "other_illnesses"].forEach(field => {
-      dataObj[field] = formData.get(field) || "";
-    });
+    const dob = formData.get("dob");
+    if (!dob || !/^\d{4}-\d{2}-\d{2}$/.test(dob)) {
+      alert("Please enter a valid date of birth (YYYY-MM-DD).");
+      return;
+    }
 
-    // Collect allergies (multiple)
-    dataObj.allergies = [];
-    form.querySelectorAll('input[name="allergies"]:checked').forEach(cb => {
+    const dataObj = {
+      patientName: formData.get("patientName"),
+      age: formData.get("age"),
+      weight: formData.get("weight"),
+      height: formData.get("height"),
+      dob: dob,
+      other_allergies: formData.get("other_allergies") || "",
+      other_illnesses: formData.get("other_illnesses") || "",
+      allergies: [],
+      illnesses: [],
+    };
+
+    form.querySelectorAll('input[name="allergies"]:checked').forEach((cb) => {
       dataObj.allergies.push(cb.value);
     });
 
-    // Collect illnesses (multiple)
-    dataObj.illnesses = [];
-    form.querySelectorAll('input[name="illnesses"]:checked').forEach(cb => {
+    form.querySelectorAll('input[name="illnesses"]:checked').forEach((cb) => {
       dataObj.illnesses.push(cb.value);
     });
 
-    // Generate unique patient ID
-    dataObj.id = "MHIS-" + Math.floor(100000 + Math.random() * 900000);
+    fetch("./php/patient.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataObj),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        console.log("Server response:", response); // <--- add this
+        if (response.success) {
+          patientIDDisplay.textContent = response.patient_id || "Unknown";
+          confirmation.style.display = "block";
+          overlay.style.display = "flex";
+          form.style.display = "none";
+          form.reset();
+        } else {
+          alert("Error: " + response.message);
+        }
+      })
+      .catch((err) => {
+        console.error("Fetch error:", err);
+        alert("Submission failed.");
+      });
 
-    // Save data to localStorage
-    let patients = JSON.parse(localStorage.getItem("patients") || "[]");
-    patients.push(dataObj);
-    localStorage.setItem("patients", JSON.stringify(patients));
-
-    // Show patient ID in popup
-    if (patientIDDisplay) {
-      patientIDDisplay.textContent = dataObj.id;
-    }
-
-    // Hide form, show confirmation and overlay
-    form.style.display = "none";
-    if (confirmation) {
-      confirmation.style.display = "block";
-    }
-    if (overlay) {
-      overlay.style.display = "flex";
-    }
-
-    // Reset form (optional here because form is hidden)
-    form.reset();
+    closeBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "../index.html";
+    });
   });
-
-  // Popup close button: redirect based on referrer
-  closeBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const referrer = document.referrer;
-    if (referrer.endsWith("guest.html")) {
-      window.location.href = "./guest.html";
-    } else {
-      window.location.href = "./homepage.html";
-    }
-  });
-});
-
-document.querySelector(".container").addEventListener("click", function (e) {
-  e.preventDefault();
-  const referrer = document.referrer;
-
-  if (referrer.endsWith("guest.html")) {
-    window.location.href = "./guest.html";
-  } else {
-    window.location.href = "./homepage.html";
-  }
 });

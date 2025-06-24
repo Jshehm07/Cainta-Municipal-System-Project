@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthyCainta.Com</title>
+  <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png" />
+  <link rel="stylesheet" href="./hotline.css">
+
+  <!-- ====== Font Links ====== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!-- ====== Boxicons Link ====== -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- ====== Header and Footer Link ====== -->
+  <link rel="stylesheet" href="../top-foot.css">
+  <script src="../logged-in.js" defer></script>
+  <script src="../top-foot.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="topbar">
+            <img src="../images/Cainta-Rizal-Logo.png" alt="">
+            <h2>HEALTHY SA CAINTA RIZAL</h2>
+        </div>
+        <div class="navbar"> 
+            <i class='bx bx-menu' id="menu-btn"></i>
+            <a href="../index.html" class="hideOnMobile">HOME</a>
+            <a href="../pages/newsfeed.html" class="hideOnMobile">NEWS</a>
+            <a href="#" class="hideOnMobile active">HOTLINES</a>
+            <a href="../pages/FAQs.html" class="hideOnMobile">FAQs</a>
+            <a href="../pages/login.html" class="log hideOnLog">LOG IN</a>
+            <a href="#" class="log showOnLog">LOG OUT</a>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <a href="../index.html" class="hideOnPC">HOME</a>
+            <a href="../pages/newsfeed.html" class="hideOnPC">NEWS</a>
+            <a href="#" class="hideOnPC active">HOTLINES</a>
+            <a href="../pages/Scheduler.html">SCHEDULE AN APPOINTMENT</a>
+            <a href="../pages/registration.html">PATIENT REGISTRATION</a>
+            <a href="../pages/vaxtrack.html">VACCINE TRACKER</a>
+            <a href="../pages/DLForms.html">FORMS</a>
+            <a href="../pages/tips.html">HEALTIPS</a>
+            <a href="../myaccount.html" class="showOnLog">ACCOUNT</a>
+        </div>
+    </header>
+
+    <div class="section-title">HOTLINES YOU MUST KNOW!</div>
+
+    <div class="hotline-container">
+
+        <div class="hotline-card">
+            <img src="/images/MDRRMO.jpg" alt="MDRRMO" class="hotline-image">
+
+            <div class="hotline-logo-container">
+                <img src="/images/mdrrmo .png" alt="MDRRMO Logo" class="hotline-logo">
+            </div>
+
+            <div class="hotline-details">
+                <div class="hotline-title">MDDRMO RESCUE HOTLINE</div>
+                <div class="hotline-number">8535-0131</div>
+                <div class="hotline-desc">For all your emergency and rescue needs.</div>
+            </div>
+
+        </div>
+
+        <div class="hotline-card reverse">
+            <img src="/images/Cainta-Hospital.jpg" alt="Cainta Hospital" class="hotline-image">
+
+            <div class="hotline-logo-container">
+                <img src="/images/M-Hospital.png" alt="Cainta Hospital Logo" class="hotline-logo">
+            </div>
+
+            <div class="hotline-details">
+                <div class="hotline-title">MUNICIPAL HOSPITAL</div>
+                <div class="hotline-number">8696-2605 / 028696-2605</div>
+                <div class="hotline-desc">For all your hospital and medical needs.</div>
+            </div>
+        </div>
+
+        <div class="hotline-card">
+            <img src="/images/Fire.jpg" alt="Fire Department" class="hotline-image">
+
+            <div class="hotline-logo-container">
+                <img src="/images/Fire.png" alt="Fire Dept Logo" class="hotline-logo">
+            </div>
+
+            <div class="hotline-details">
+                <div class="hotline-title">FIREMEN HOTLINE</div>
+                <div class="hotline-number">028696-2616</div>
+                <div class="hotline-desc">For all your fire emergency needs.</div>
+            </div>
+        </div>
+
+        <div class="hotline-card reverse">
+            <img src="/images/Police.jpg" alt="Police Station" class="hotline-image">
+
+            <div class="hotline-logo-container">
+                <img src="/images/Police.png" alt="Police Station Logo" id="police" class="hotline-logo">
+            </div>
+
+            <div class="hotline-details">
+                <div class="hotline-title">POLICE HOTLINE</div>
+                <div class="hotline-number">0998 598 5722</div>
+                <div class="hotline-desc">For all your police needs.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="section-title">HOSPITALS IN CAINTA RIZAL</div>
+
+    <div class="container">
+        <div class="hospital-image">
+            <img id="hospitalImage" src="../images/cainta.jpg" alt="Hospital Image">
+        </div>
+
+        <div class="buttons">
+            <button onclick="changeMap('cainta')">Cainta Municipal Hospital</button>
+            <button onclick="changeMap('ortigas')">Ortigas Hospital</button>
+            <button onclick="changeMap('metro')">Metro Rizal Doctors Hospital</button>
+            <button onclick="changeMap('medical')">Medical City Clinic</button>
+        </div>
+
+        <div class="map">
+            <iframe id="hospitalMap"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.9875985077277!2d121.1150372748397!3d14.599108377034472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b88267ea5db5%3A0x16914b80c02edc7f!2sCainta%20Municipal%20Hall!5e0!3m2!1sen!2sph!4v1719128316801!5m2!1sen!2sph"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+
+
+    <script src="./hotlines.js"></script>
+
+    <footer>
+        <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+    </footer>
+
+</body>
+</html>

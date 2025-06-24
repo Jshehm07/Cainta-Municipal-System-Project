@@ -1,0 +1,172 @@
+body {
+  margin-top: 9rem;
+}
+
+.download-forms {
+  overflow-x: hidden;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+
+.download-forms * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.download-forms .LogoContainer {
+  display: flex;
+  width: 100vw;
+  background: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.download-forms .LogoBox {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  padding: 28px 0;
+  margin: 0 auto;
+}
+
+.download-forms .Logo {
+  height: auto;
+  max-width: 400px;
+  width: 100%;
+}
+
+.download-forms .HeaderContainer {
+  display: flex;
+  width: 100vw;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.download-forms .h1container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.download-forms h1 {
+  color: #333;
+  font-size: 30pt;
+  font-weight: bold;
+}
+
+.download-forms .OuterContainer {
+  margin: 50px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(224, 224, 224);
+  width: 90%;
+  max-width: 1200px;
+}
+
+.download-forms .inHeader {
+  display: flex;
+  padding: 0 9px;
+  font-size: 14pt;
+  width: 100%;
+  background-color: #004080;
+  color: white;
+}
+
+.download-forms .inHeaderA,
+.download-forms .inHeaderB {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  background-color: #004080;
+  box-sizing: border-box;
+}
+
+.download-forms .inHeaderA {
+  justify-content: flex-start;
+  width: 80%;
+}
+
+.download-forms .inHeaderB {
+  justify-content: center;
+  width: 20%;
+}
+
+.download-forms .inList {
+  display: flex;
+  justify-content: flex-start;
+  outline: 1px solid rgb(226, 226, 226);
+  width: 100%;
+  background-color: #ffffff;
+  padding: 9px;
+  gap: 60px;
+}
+
+.download-forms .inList:hover {
+  background-color: #7aceff;
+}
+
+.download-forms .formname {
+  display: flex;
+  width: 75%;
+}
+
+.download-forms .dlcon {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+}
+
+.download-forms .dlbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #004080;
+  padding: 0 8px;
+  width: 110px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-size: 10pt;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .download-forms .h1container {
+    justify-content: center;
+  }
+
+  .download-forms .inHeaderA,
+  .download-forms .inHeaderB {
+    font-size: 15pt;
+    width: 50%;
+  }
+
+  .download-forms .dlbutton {
+    font-size: 10pt;
+    padding: 0 6px;
+  }
+
+  .download-forms .formname {
+    width: 50%;
+    padding: 20px 0;
+  }
+
+  .download-forms .dlcon {
+    width: 50%;
+    align-items: center;
+  }
+
+  .download-forms .LogoBox {
+    justify-content: center;
+    max-width: 500px;
+  }
+}
+
+footer {
+  margin-top: 8rem;
+}

@@ -3,18 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
-    <link rel="stylesheet" href="registration.css">
-    <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>HealthyCainta.Com</title>
+    <link rel="stylesheet" href="registration.css"/>
+    <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+
+    <!-- ====== Font Links ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- ====== Boxicons Link ====== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- ====== Header and Footer Link ====== -->
+    <link rel="stylesheet" href="../top-foot.css">
+    <script src="../logged-in.js" defer></script>
+    <script src="../top-foot.js"></script>
+
+    <!-- ====== CSS Links ====== -->
+    <link rel="stylesheet" href="./registration.css">
+
+    <!-- ======= JS Links ======== -->
     <script src="./registration.js"></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img src="../images/Cainta-Rizal-Logo.png" alt="Cainta Rizal Logo" class="logo">
-            <h1>Municipal Health Information System</h1>
-            <p>Empowering local health services through technology.</p>
+   <header>
+        <div class="topbar">
+            <img src="../images/Cainta-Rizal-Logo.png" alt="">
+            <h2>HEALTHY SA CAINTA RIZAL</h2>
+        </div>
+        <div class="navbar"> 
+            <i class='bx bx-menu' id="menu-btn"></i>
+            <a href="../index.html" class="hideOnMobile">HOME</a>
+            <a href="../pages/newsfeed.html" class="hideOnMobile">NEWS</a>
+            <a href="../pages/hotline.html" class="hideOnMobile">HOTLINES</a>
+            <a href="../pages/FAQs.html" class="hideOnMobile">FAQs</a>
+            <a href="../pages/login.html" class="log hideOnLog">LOG IN</a>
+            <a href="#" class="log showOnLog">LOG OUT</a>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <a href="../index.html" class="hideOnPC active">HOME</a>
+            <a href="../pages/newsfeed.html" class="hideOnPC">NEWS</a>
+            <a href="../pages/hotline.html" class="hideOnPC">HOTLINES</a>
+            <a href="../pages/FAQs.html" class="hideOnPC">FAQs</a>
+            <a href="../pages/Scheduler.html">SCHEDULE AN APPOINTMENT</a>
+            <a href="../pages/registration.html" class="active">PATIENT REGISTRATION</a>
+            <a href="../pages/vaxtrack.html">VACCINE TRACKER</a>
+            <a href="../pages/DLForms.html">FORMS</a>
+            <a href="../pages/tips.html">HEALTIPS</a>
+            <a href="../myaccount.html" class="showOnLog">ACCOUNT</a>
         </div>
     </header>
 
@@ -100,11 +140,10 @@
 
 
     <footer>
-        <div class="container">
-            <p>&copy; <span id="currentYear"></span> Municipal Health Information System. All rights reserved.</p>
-        </div>
+        <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
     </footer>
 
     <script src="./registration.js"></script>
+    <script src="./patient.js"></script>
 </body>
 </html>

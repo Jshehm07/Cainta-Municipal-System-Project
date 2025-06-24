@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthyCainta.Com</title>
+    <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./login.css">
+</head>
+<body>
+  <div class="navbar">
+    <img src="../images/Cainta-Rizal-Logo.png" alt="Cainta Rizal Logo" class="logo">
+    <h1>Municipal Health Info System</h1>
+    <nav class="navigation">
+      <a href="./aboutus.html">About Us</a>
+      <a href="./overview.html">Services Overview</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h2 id="formTitle">Log In</h2>
+    <form id="authForm">
+      <div id="roleField">
+        <label for="role">Log As:</label>
+        <select id="role" name="role">
+          <option value="staff">Staff</option>
+          <option value="citizen">Citizen</option>
+        </select>
+        </div>
+
+      <div id="nameField" class="hidden">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" />
+      </div>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required />
+      
+      <div id="confirmPasswordField" class="hidden">
+        <label for="confirmPassword">Enter Password Again</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" />
+      </div>
+
+      <div id="forgotPassword" style="text-align: right; margin-top: -10px; margin-bottom: 15px;">
+        <a href="resetpassword.html" style="font-size: 13px;">Forgot Password?</a>
+      </div>
+
+      <button type="submit" id="submitBtn">Log In</button>
+      <button type="button" id="viewGuest">View as Guest</button>
+    </form>
+
+    <div class="links" id="switchLinks">
+      <a href="#" onclick="toggleForm('staff')">Register as Staff</a> |
+      <a href="#" onclick="toggleForm('citizen')">Register as Citizen</a>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

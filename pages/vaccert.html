@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>VAXC</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png" />
+  <link rel="stylesheet" href="./vaccert.css">
+</head>
+<body>
+
+  <div class="outcontainer">
+    <div class="leftHQR">
+      <img class="QRQRQR" src="../images/QRRICK.png">
+      <div class="bottomtextleft">
+        <p>This code is compliant with the framework of European Union Digital COVID Certificate (EU DCC)</p>
+      </div>
+    </div>
+
+    <div class="rightHinfo">
+        <h3>VACCINE DETAILS</h3>
+        
+        <h4 class="fullname">Full Name:</h4>
+        
+        <div class="inRow">
+            <h4 class="dob">Age:</h4>
+            <h4 class="vaccine">Vaccine:</h4>
+        </div>
+
+        <div class="inRow">
+            <h4 class="dose1">1st Dose:</h4>
+            <h4 class="dose1Date"></h4>
+        </div>
+
+        <div class="inRow">
+            <h4 class="dose2">2nd Dose:</h4>
+            <h4 class="dose2Date"></h4>
+        </div>
+
+        <h4 class="issuer">Issuer:</h4>
+        <h4 class="issued">Issuance Date and Time:</h4>
+
+        <div class="inRow2Cert">
+            <h4 class="Cert">Certificate ID:</h4>
+        </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const data = JSON.parse(localStorage.getItem("vaxRecord"));
+      if (!data) {
+        alert("No vaccine record found.");
+        window.location.href = "../index.html";
+        return;
+      }
+
+      document.querySelector(".fullname").textContent = "Full Name: " + data.VACCINE_F_NAME + " " + data.VACCINE_L_NAME;
+      document.querySelector(".dob").textContent = "Age: " + data.VACCINE_AGE;
+      document.querySelector(".vaccine").textContent = "Vaccine: " + data.VACCINE_V_NAME;
+      document.querySelector(".dose1Date").textContent = data.VACCINE_F_DOSE || "Not Provided";
+      document.querySelector(".dose2Date").textContent = data.VACCINE_S_DOSE || "Not Provided";
+      document.querySelector(".issuer").textContent = "Issuer: Municipality of Cainta";
+      document.querySelector(".issued").textContent = "Issued: " + new Date().toLocaleString();
+      document.querySelector(".Cert").textContent = "Certificate ID: " + data.VACCINE_ID;
+
+      setTimeout(() => {
+        html2pdf().from(document.body).save("Vaccine_Certificate.pdf").then(() => {
+          window.location.href = "../index.html";
+        });
+      }, 800);
+    });
+  </script>
+
+</body>
+</html>

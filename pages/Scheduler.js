@@ -1,14 +1,10 @@
-
-
-
 let currentDate = new Date();
 let selectedDate = null;
 
-
-window.onload = function () {
+window.onload = () => {
   renderCalendar();
+  updateProfileName();
 };
-
 
 function toggleForm(value) {
   document.getElementById("client").classList.toggle("hidden", value !== "client");
@@ -16,12 +12,10 @@ function toggleForm(value) {
   document.getElementById("thankYouMessage").classList.remove("show");
 }
 
-
 function changeMonth(offset) {
   currentDate.setMonth(currentDate.getMonth() + offset);
   renderCalendar();
 }
-
 
 function renderCalendar() {
   const calendarDates = document.getElementById("calendarDates");
@@ -39,137 +33,111 @@ function renderCalendar() {
     year: "numeric",
   });
 
-  
-  for (let i = 0; i < firstDay; i++) {
-    const blank = document.createElement("div");
-    calendarDates.appendChild(blank);
-  }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
+  for (let i = 0; i < firstDay; i++) {
+    calendarDates.appendChild(document.createElement("div"));
+  }
 
   for (let day = 1; day <= daysInMonth; day++) {
     const dateEl = document.createElement("div");
     dateEl.className = "calendar-date";
     dateEl.textContent = day;
 
-    dateEl.onclick = function () {
-      document.querySelectorAll(".calendar-date").forEach(el => el.classList.remove("selected"));
-      dateEl.classList.add("selected");
-      selectedDate = new Date(year, month, day);
-    };
+    const dateToCheck = new Date(year, month, day);
+    dateToCheck.setHours(0, 0, 0, 0);
+
+    if (dateToCheck < today) {
+      dateEl.classList.add("past-date");
+      dateEl.style.pointerEvents = "none";
+      dateEl.style.opacity = "0.4";
+    } else {
+      dateEl.onclick = () => {
+        document.querySelectorAll(".calendar-date").forEach(el => el.classList.remove("selected"));
+        dateEl.classList.add("selected");
+        selectedDate = dateToCheck.toISOString().split('T')[0];
+      };
+    }
 
     calendarDates.appendChild(dateEl);
   }
 }
 
-
 function shwoThankYou() {
-  const selectedTime = document.getElementById("timeSelect").value;
-  const ticketNumber = document.getElementById("ticketNumber");
-  const overlay = document.getElementById("thankYouOverlay");
+  const type = document.getElementById("apptType").value;
+  const time = document.getElementById("timeSelect").value;
+  const date = selectedDate;
 
-  if (!selectedDate || !selectedTime) {
-    alert("Please select a date and time for your appointment.");
+  if (!date || !time) {
+    alert("Please select a date and time.");
     return;
   }
 
-  const clientForm = document.getElementById("client");
-  const othersForm = document.getElementById("others");
-  const activeForm = !clientForm.classList.contains("hidden") ? clientForm : othersForm;
-
-  const inputs = activeForm.querySelectorAll("input, select");
-  for (let input of inputs) {
-    if (!input.checkValidity()) {
-      alert("Please complete all required fields correctly.");
-      input.focus();
-      return;
-    }
-  }
-
-  const ticket = Math.floor(Math.random() * 9000 + 1000);
-  ticketNumber.textContent = ticket;
-
-  
-  clientForm.classList.add("hidden");
-  othersForm.classList.add("hidden");
-
-  
-  overlay.classList.add("show");
-}
-
-document.querySelector(".header").addEventListener("click", function (e) {
-  e.preventDefault();
-  const referrer = document.referrer;
-
-  if (referrer.endsWith("guest.html")) {
-    window.location.href = "./guest.html";
-  } else {
-    window.location.href = "./homepage.html";
-  }
-});
-
-function shwoThankYou() {
-  const apptType = document.getElementById("apptType").value;
-
-  let appointment = {
-    type: apptType,
-    date: document.getElementById("monthLabel").textContent, // or selected date
-    time: document.getElementById("timeSelect").value,
-  };
-
-  if (apptType === "client") {
+  let data = {};
+  if (type === "client") {
     const form = document.getElementById("client");
-    const [name, phone, spec] = form.querySelectorAll("input, select");
-    appointment.name = name.value;
-    appointment.phone = phone.value;
-    appointment.specific = spec.value;
+    const [name, phone, specifics] = form.querySelectorAll("input, select");
+    data = {
+      APT_NAME: name.value.trim(),
+      APT_APPOINTEE: "-",
+      APT_EMAIL: "-",
+      APT_PHONE: phone.value.trim(),
+      APT_IDENTIFICATION: "-",
+      APT_SPECIFICS: specifics.value,
+      APT_DATE: date,
+      APT_TIME: time,
+    };
   } else {
     const form = document.getElementById("others");
-    const [pName, aName, phone, idType, file, spec] = form.querySelectorAll("input, select");
-    appointment.patientName = pName.value;
-    appointment.appointeeName = aName.value;
-    appointment.phone = phone.value;
-    appointment.idType = idType.value;
-    appointment.specific = spec.value;
+    const [patient, appointee, phone, idtype, , specifics] = form.querySelectorAll("input, select");
+    data = {
+      APT_NAME: patient.value.trim(),
+      APT_APPOINTEE: appointee.value.trim(),
+      APT_EMAIL: "-",
+      APT_PHONE: phone.value.trim(),
+      APT_IDENTIFICATION: idtype.value.trim(),
+      APT_SPECIFICS: specifics.value,
+      APT_DATE: date,
+      APT_TIME: time,
+    };
   }
 
-  // Save to localStorage
-  const appointments = JSON.parse(localStorage.getItem("appointments") || "[]");
-  appointments.push(appointment);
-  localStorage.setItem("appointments", JSON.stringify(appointments));
-
-  // Show thank you
-  document.getElementById("thankYouOverlay").style.display = "flex";
-  document.getElementById("ticketNumber").textContent = Math.floor(Math.random() * 10000);
+  fetch("./appointment.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  })
+    .then(res => res.json())
+    .then(response => {
+      if (response.success) {
+        document.getElementById("ticketNumber").textContent = response.ticket || Math.floor(Math.random() * 9000 + 1000);
+        document.getElementById("thankYouOverlay").style.display = "flex";
+      } else {
+        alert("Failed to book appointment.");
+      }
+    })
+    .catch(err => {
+      console.error("Error:", err);
+      alert("Error sending appointment.");
+    });
 }
 
 function redirectBack() {
-  const referrer = document.referrer;
-  if (referrer.endsWith("guest.html")) {
-    window.location.href = "./guest.html";
-  } else {
-    window.location.href = "./homepage.html";
-  }
+  window.location.href = "../index.html";
 }
 
 
-const profileName = document.querySelector('.profile h3');
-
-  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-
+function updateProfileName() {
+  const profileName = document.querySelector(".profile h3");
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
   const referrer = document.referrer;
 
-  function getFilename(url) {
-    if (!url) return '';
-    const parts = url.split('/');
-    return parts[parts.length - 1];
-  }
-
-  const previousPage = getFilename(referrer);
-
-  if (previousPage === 'guest.html') {
-    profileName.textContent = 'Guest';
+  if (referrer.includes("guest.html")) {
+    profileName.textContent = "Guest";
   } else if (loggedInUser && loggedInUser.name) {
     profileName.textContent = loggedInUser.name;
   } else {
-    profileName.textContent = 'Name Here';
+    profileName.textContent = "Name Here";
   }
+}

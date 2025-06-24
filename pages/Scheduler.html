@@ -3,36 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Appointment Scheduler</title>
+  <title>HealthyCainta.Com</title>
   <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png">
   <link rel="stylesheet" href="./Scheduler.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+  <!-- ====== Font Links ====== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!-- ====== Boxicons Link ====== -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- ====== Header and Footer Link ====== -->
+  <link rel="stylesheet" href="../top-foot.css">
+  <script src="../logged-in.js" defer></script>
+  <script src="../top-foot.js"></script>
 
 </head>
 <body>
 
- <div class="header">
-  <div class="logo-con">
-    <img src="../images/Cainta-Rizal-Logo.png" alt="Logo" class="logo" />
-    <div class="m-title">Municipal of Cainta Rizal</div>
-  </div>
-</div>
-
-
+  <header>
+      <div class="topbar">
+          <img src="../images/Cainta-Rizal-Logo.png" alt="">
+          <h2>HEALTHY SA CAINTA RIZAL</h2>
+      </div>
+      <div class="navbar"> 
+          <i class='bx bx-menu' id="menu-btn"></i>
+          <a href="../index.html" class="hideOnMobile">HOME</a>
+          <a href="../pages/newsfeed.html" class="hideOnMobile">NEWS</a>
+          <a href="../pages/hotline.html" class="hideOnMobile">HOTLINES</a>
+          <a href="../pages/FAQs.html" class="hideOnMobile">FAQs</a>
+          <a href="../pages/login.html" class="log hideOnLog">LOG IN</a>
+          <a href="#" class="log showOnLog">LOG OUT</a>
+      </div>
+      <div class="sidebar" id="sidebar">
+          <a href="../index.html" class="hideOnPC">HOME</a>
+          <a href="../pages/newsfeed.html" class="hideOnPC">NEWS</a>
+          <a href="../pages/hotline.html" class="hideOnPC">HOTLINES</a>
+          <a href="../pages/FAQs.html" class="hideOnPC">FAQs</a>
+          <a href="../pages/Scheduler.html" class="active">SCHEDULE AN APPOINTMENT</a>
+          <a href="../pages/registration.html">PATIENT REGISTRATION</a>
+          <a href="../pages/vaxtrack.html">VACCINE TRACKER</a>
+          <a href="../pages/DLForms.html">FORMS</a>
+          <a href="#">CERTIFICATES</a>
+          <a href="../pages/tips.html">HEALTIPS</a>
+          <a href="../myaccount.html" class="showOnLog">ACCOUNT</a>
+      </div>
+    </header>
+  
   <div class="wrapper">
-    <aside class="sidebar">
-      
+    <aside class="side">
       <div class="profile">
         <img src="../images/icons/profile.png" alt="Profile" class="profile-icon" />
         <h3>Name Here</h3>
-      <div class="select-group">
-  <label for="apptType">Check-in Type:</label>
-  <select id="apptType" onchange="toggleForm(this.value)">
-    <option value="client">Client Check-in</option>
-    <option value="others">Other's Check-in</option>
-  </select>
-</div>
+        <div class="select-group">
+          <label for="apptType">Check-in Type:</label>
+          <select id="apptType" onchange="toggleForm(this.value)">
+            <option value="client">Client Check-in</option>
+            <option value="others">Other's Check-in</option>
+          </select>
+        </div>
       </div>
     </aside>
 
@@ -71,13 +102,12 @@
       </div>
     </div>
 
-   
     <div class="right">
       <form id="client">
         <label>Name</label>
         <input type="text" required />
         <label>Phone Number</label>
-        <input type="tel" required />
+        <input type="number" required />
         <label>Appointment Specifics</label>
         <select required>
           <option value="">-- Select --</option>
@@ -90,39 +120,43 @@
         <button type="button" class="button" onclick="shwoThankYou()">Submit</button>
       </form>
 
-     <form id="others" class="hidden">
-    <label>Patient Name</label>
-    <input type="text" required>
-    <label>Appointee Name</label>
-    <input type="text" required>
-    <label>Phone Number</label>
-    <input type="tel" required>
-    <label>ID Type</label>
-    <input type="text" required>
-    <label>Upload ID Photo</label>
-    <input type="file" accept="image/*" required>
-    <label>Appointment Specifics</label>
-    <select required>
-      <option value="">-- Select --</option>
-      <option>Family Doctor</option>
-      <option>Optician</option>
-      <option>Dentist</option>
-      <option>Pediatrician</option>
-      <option>Gynecologist</option>
-    </select>
-    <button type="button" class="button" onclick="shwoThankYou()">Submit</button>
-  </form>
-  <div id="thankYouOverlay" class="overlay">
-  <div class="thank-you" id="thankYouMessage">
-    <h2>Thank You!</h2>
-    <p>Your appointment has been booked.</p>
-    <p><strong>Ticket Number:</strong> #APT<span id="ticketNumber"></span></p>
-    <button class="button" onclick="redirectBack()">Return to Homepage</button>
-  </div>
-</div>
-     </div>
+      <form id="others" class="hidden">
+        <label>Patient Name</label>
+        <input type="text" required>
+        <label>Appointee Name</label>
+        <input type="text" required>
+        <label>Phone Number</label>
+        <input type="number" required>
+        <label>ID Type</label>
+        <input type="text" required>
+        <label>Upload ID Photo</label>
+        <input type="file" accept="image/*" required>
+        <label>Appointment Specifics</label>
+        <select required>
+          <option value="">-- Select --</option>
+          <option>Family Doctor</option>
+          <option>Optician</option>
+          <option>Dentist</option>
+          <option>Pediatrician</option>
+          <option>Gynecologist</option>
+        </select>
+        <button type="button" class="button" onclick="shwoThankYou()">Submit</button>
+      </form>
+
+      <div id="thankYouOverlay" class="overlay">
+        <div class="thank-you" id="thankYouMessage">
+          <h2>Thank You!</h2>
+          <p>Your appointment has been booked.</p>
+          <p><strong>Ticket Number:</strong> #APT<span id="ticketNumber"></span></p>
+          <button class="button" onclick="redirectBack()">Return to Homepage</button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <footer>
+        <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+  </footer>
 
   <script src="./Scheduler.js"></script>
 </body>

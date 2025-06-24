@@ -1,348 +1,174 @@
-html {
-  background-color: #f2f2f2;
-  overflow-x: hidden;
-}
-
 body {
+  background-color: #e6f0fa;
+  padding-top: 10rem;
+}
+
+body h1 {
+  font-family: 'Lalezar';
+  color: #333333;
+  font-size: 4rem;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+body .container {
   display: flex;
+  justify-self: center;
   flex-direction: column;
-  align-items: center;
-  margin: 0;
-  font-family: "Lato", sans-serif;
-}
-
-.main-header {
-  background-image: url('../images/Municipal-3.jpg');
-  filter: blur(2px);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100rem;
-  width: 100%;
-  top: 0;
-  margin: 0;
-  display: flex;
-  color: rgb(0, 0, 0);
-  position: absolute;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: -1;
-}
-
-.main-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(rgba(12, 12, 12, 0.1), rgba(0, 0, 0, 0.4));
-  z-index: 1;
 }
 
 .container {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 15px;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  background-color: #c7e3ff;
+  max-width: 75%;
+  min-width: 50%;
+  padding: 3rem;
   border-radius: 20px;
-  width: 100%;
-  max-width: 600px;
 }
 
-h2 {
-  font-family: "Lato";
-  letter-spacing: 1pt;
-  background-color: #004080;
-  color: #f2f2f2;
-  border: 1px transparent;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0px 5px 10px 0.5px #333333;
-}
-
-.PinfoParagraph,
-.VinfoParagraph {
-  font-family: "Lalezar";
-  letter-spacing: 1px;
-  font-size: 25px;
+.container h2 {
+  font-family: 'Lalezar';
+  color: #004080;
+  font-size: 3rem;
   text-align: center;
 }
 
-.input,
-.inputage {
-  font-family: "Lato";
-  font-size: 10pt;
-  padding: 10px;
-  border-radius: 5px;
-  color: #333;
-  margin: 5px;
-  width: 98%;
-  box-sizing: border-box;
+.PinfoParagraph, .VinfoParagraph {
+  font-family: 'Lalezar';
+  color: #333333;
+  font-size: 2rem;
 }
 
-.inputage {
-  max-width: 150px;
+.PersonalInfo, .VaccineForm {
+  gap: 5px;
+  background-color: #f2f2f2;
+  padding: 3rem;
+  border-radius: 20px;
 }
 
-.label,
-.label-lname {
-  font-family: "Lato";
-  font-size: 18px;
-  margin: 5px;
+label {
+  font-family: 'Lato';
+  font-size: 1.50rem;
+  font-weight: bold;
+}
+
+.input {
+  background-color: #ffffff;
+  border: solid 3px #004080;
+  font-family: 'Lato';
+  border-radius: 10px;
+  padding: 0.4rem;
+  font-size: 1.25rem;
+  width: 100%;
+  margin: 10px 0 20px 0;
 }
 
 .labelbox {
-  font-family: "Lato";
-  font-size: 18px;
-  margin: 5px;
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.labelbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
-
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-.container input:checked ~ .checkmark {
-  background-color: #004080;
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid rgb(11, 231, 29);
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
-}
-
-.PersonalInfo,
-.VaccineForm {
-  border: 2px solid black;
-  border-radius: 10px;
-  padding: 15px;
-  width: 100%;
-  max-width: 600px;
   display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  box-shadow: 0px 0px 3px 0px;
-  box-sizing: border-box;
-}
-
-.buttonSub {
-  padding: 10px;
-  border-radius: 25px;
-  border-color: black;
-  width: 100%;
-  max-width: 205px;
-  background-color: white;
-  color: #004080;
-  font-size: 15px;
-  display: flex;
-  font-family: "Lato";
-  font-weight: 1000;
-  letter-spacing: 2px;
-  justify-content: center;
-  transition-duration: 0.4s;
+  align-items: center;        
+  gap: 0.75rem;               
+  font-family: 'Lato';
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
   cursor: pointer;
 }
 
-.buttonSub:hover {
-  background-color: #004080;
-  color: white;
-  border-color: white;
-}
-
-.buttonC {
-  padding: 10px;
-  border-radius: 25px;
-  margin: 40px;
-  width: 100%;
-  max-width: 100px;
-  border-color: white;
+.labelbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  transform: scale(1.5);       
+  cursor: pointer;
+  flex-shrink: 0;              
+  appearance: none;
+  border: 2px solid #004080;
+  border-radius: 4px;
   background-color: #ffffff;
-  color: red;
-  font-size: 15px;
-  font-family: "Lato";
-  transition-duration: 0.4s;
-  cursor: pointer;
+  display: inline-block;
+  position: relative;
 }
 
-.buttonC:hover {
-  background-color: rgb(160, 160, 160);
-  color: red;
+.labelbox input[type="checkbox"]:checked::before {
+  content: "✔";
+  position: absolute;
+  top: -5px;
+  font-size: 1.2rem;
+  color: #004080;
 }
 
-.buttonpos {
+.labelbox span {
+  flex-grow: 1;
+  flex-shrink: 1;
+  word-break: break-word;
+}
+
+.container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin-top: 20px;
-  gap: 10px;
-  align-items: center;
-}
-
-.VaxT {
+  flex-grow: 1;
+  flex-shrink: 1;
+  background-color: #c7e3ff;
+  max-width: 75%;
   width: 100%;
-  max-width: 600px;
-  font-family: "Lato";
-  padding: 1px;
-  background-color: black;
-  box-sizing: border-box;
+  padding: 3rem;
+  border-radius: 20px;
+  margin: auto;
 }
 
-.dashB {
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 1px transparent;
-  font-family: "Lato";
-  font-weight: 1000;
-  transition-duration: 0.7s;
-  cursor: pointer;
+.buttonSubContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.dashB:hover {
-  background-color: rgba(255, 255, 255, 1);
-  font-size: 15px;
-  height: 35px;
-}
-
-.head {
+.buttonSub, .buttonDown {
   background-color: #004080;
-  padding: 0.5rem;
-  width: 100%;
-  height: 5rem;
-  margin: 0 0 2rem;
-  display: flex;
-  align-items: center;
-}
-
-.head a {
-  text-decoration: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.head img {
-  height: 5rem;
-  width: 7rem;
-}
-
-.head p {
-  font-family: "Lalezar";
+  border: none;
   color: #ffffff;
-  font-size: 2rem;
-  margin: 0 0 0 1rem;
+  font-weight: bold;
+  font-family: 'Lato';
+  font-size: 1.25rem;
+  width: 15rem;
+  padding: 1rem 3.5rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  margin: 1rem auto;
 }
 
-@media (max-width: 600px) {
-  body {
-    padding: 0 10px;
-    font-size: 14px;
+.buttonSub:hover, .buttonDown:hover {
+  background-color: #0059b1;
+}
+
+.buttonSub:active, .buttonDown:active {
+  background-color: #0075ea;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    padding: 1.5rem;
   }
 
-  .main-header {
-    height: 30rem; /* reduce height on mobile */
-  }
-
-  h2 {
-    font-size: 1.5rem;
-    padding: 10px;
-  }
-
-  .PinfoParagraph,
-  .VinfoParagraph {
-    font-size: 18px;
-    padding: 5px;
-  }
-
-  .input,
-  .inputage {
-    font-size: 12px;
-    padding: 8px;
-  }
-
-  .label,
-  .label-lname,
   .labelbox {
-    font-size: 16px;
+    font-size: 1.2rem;
   }
 
-  .buttonSub,
-  .buttonC {
-    font-size: 14px;
-    max-width: 100%;
+  .labelbox input[type="checkbox"] {
+    transform: scale(1.4);
   }
 
-  .head {
-    height: auto;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
+  body h1 {
+    font-size: 2.5rem;
+    margin: 0 0 2rem 0;
   }
 
-  .head img {
-    width: 100%;
-    height: auto;
-    max-width: 150px;
+  .container h2 {
+    font-size: 2rem;
   }
 
-  .head p {
+  .PinfoParagraph, .VinfoParagraph {
     font-size: 1.5rem;
-    margin: 0.5rem 0 0 0;
-  }
-
-  .vaxT {
-    padding: 1px;
-  }
-
-  .container,
-  .PersonalInfo,
-  .VaccineForm,
-  .VaxT {
-    width: 100%;
-    padding: 1px;
-  }
-
-
-
-  .buttonpos {
-    gap: 5px;
   }
 }
-

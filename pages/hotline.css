@@ -1,0 +1,252 @@
+
+body {
+  background: #e0e9f6;
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  margin-top: 9rem;
+}
+
+.section-title {
+  text-align: center;
+  font-family: "Lalezar", cursive;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: bold;
+  color: #003b73;
+  padding: 20px 10px 10px;
+  margin: 2rem auto;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  margin: 10px auto 0;
+  width: 50%;
+  height: 7px;
+  background-color: #003b73;
+  border-radius: 2px;
+}
+
+.hotline-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hotline-card {
+  display: flex;
+  background-color: #003b73;
+  text-align: center;
+  color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  height: 200px;
+  margin: 1rem;
+}
+
+.hotline-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.hotline-image {
+  flex: 0 0 35%;
+  height: 100%;
+  min-width: 250px;
+  object-fit: cover;
+}
+
+.hotline-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 100%;
+  margin-top: 10px;
+}
+
+.hotline-logo {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+}
+
+#police {
+  width: 120%;
+}
+
+.hotline-details {
+  flex: 1;
+  padding: 20px 30px;
+}
+
+.hotline-title {
+  font-size: clamp(1.5rem, 3vw, 2.35rem);
+  font-family: 'Lalezar';
+}
+
+.hotline-number {
+  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  font-family: 'Lato';
+  font-weight: bold;
+}
+
+.hotline-desc {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-family: 'Lato';
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 72%;
+  gap: 20px;
+  background-color: #003b73;
+  border-radius: 10px;
+  padding: 2rem 2rem;
+  justify-self: center;
+  margin: 3rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 40px;
+}
+
+.buttons button {
+  background-color: #d3ecff;
+  color: #043e75;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.buttons button:hover {
+  background-color: #a3d0ff;
+  transform: scale(1.02);
+}
+
+.buttons button.active {
+  background-color: #2563eb;
+  color: white;
+  transform: scale(1.03);
+}
+
+
+.map {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+}
+
+.map iframe {
+  width: 100%;
+  height: clamp(300px, 40vw, 400px);
+  border: none;
+  border-radius: 10px;
+}
+
+.hospital-image {
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.hospital-image img {
+  width: 100%;
+  height: var(--hospital-image-height, 15rem); /* adjustable height using CSS variable */
+  object-fit: cover;  
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+
+@media screen and (max-width: 768px) {
+  body {
+    margin-top: 5rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    margin: 1.5rem 1rem;
+    padding: 10px;
+  }
+
+  .section-title::after {
+    height: 5px;
+    width: 60%;
+  }
+
+  .hotline-card,
+  .hotline-card.reverse {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .hotline-image {
+    width: 100%;
+    height: 150px;
+    min-width: auto;
+  }
+
+  .hotline-logo-container {
+    width: 120px;
+    height: auto;
+    margin: 10px auto;
+  }
+
+  .hotline-logo {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .hotline-details {
+    padding: 15px;
+  }
+
+  .hotline-title {
+    font-size: 1.6rem;
+  }
+
+  .hotline-number {
+    font-size: 1.4rem;
+  }
+
+  .hotline-desc {
+    font-size: 1.1rem;
+  }
+
+  .container {
+    flex-direction: column;
+    width: 90%;
+    padding: 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .buttons {
+    gap: 20px;
+  }
+
+  .buttons button {
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    width: 100%;
+  }
+
+  .map iframe {
+    height: 300px;
+  }
+}

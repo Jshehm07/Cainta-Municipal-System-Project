@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthyCainta.Com</title>
+  <link rel="icon" href="../images/Cainta-Rizal-Logo.png" type="image/png" />
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../top-foot.css" />
+  <link rel="stylesheet" href="./tables.css" />
+
+  <!-- Scripts -->
+  <script src="../top-foot.js" defer></script>
+  <script src="../logged-in.js" defer></script>
+
+
+  <link rel="stylesheet" href="../my-account.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <img src="./images/Cainta-Rizal-Logo.png" alt="">
+      <h2>HEALTHY SA CAINTA RIZAL</h2>
+    </div>
+    <div class="navbar"> 
+      <i class='bx bx-menu' id="menu-btn"></i>
+      <a href="../index.html" class="hideOnMobile">HOME</a>
+      <a href="../pages/newsfeed.html" class="hideOnMobile">NEWS</a>
+      <a href="../pages/hotline.html" class="hideOnMobile">HOTLINES</a>
+      <a href="../pages/FAQs.html" class="hideOnMobile">FAQs</a>
+      <a href="../pages/login.html" class="log hideOnLog">LOG IN</a>
+      <a href="#" class="log showOnLog">LOG OUT</a>
+    </div>
+    <div class="sidebar" id="sidebar">
+      <a href="../index.html" class="hideOnPC">HOME</a>
+      <a href="../pages/newsfeed.html" class="hideOnPC">NEWS</a>
+      <a href="../pages/hotline.html" class="hideOnPC">HOTLINES</a>
+      <a href="../pages/FAQs.html" class="hideOnPC">FAQs</a>
+      <a href="../pages/Scheduler.html">SCHEDULE AN APPOINTMENT</a>
+      <a href="../pages/registration.html">PATIENT REGISTRATION</a>
+      <a href="../pages/vaxtrack.html">VACCINE TRACKER</a>
+      <a href="../pages/DLForms.html">FORMS</a>
+      <a href="./pages/tips.html">HEALTIPS</a>
+      <a href="./myaccount.html" class="showOnLog active">ACCOUNT</a>
+    </div> 
+  </header>
+
+  <main>
+    <div class="account-box">
+      <h2>My Account</h2>
+
+      <div class="account-row">
+        <strong>Name:</strong>
+        <span id="accountName">---</span>
+        <button onclick="editField('name')">Edit</button>
+      </div>
+
+      <div class="account-row">
+        <strong>Email:</strong>
+        <span id="accountEmail">---</span>
+        <button onclick="editField('email')">Edit</button>
+      </div>
+
+      <div class="account-row">
+        <strong>Password:</strong>
+        <span id="accountPassword">*****</span>
+        <button onclick="editField('password')">Edit</button>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+  </footer>
+
+  <script src="../account.js"></script>
+</body>
+</html>
