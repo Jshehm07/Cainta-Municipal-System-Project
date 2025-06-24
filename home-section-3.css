@@ -1,0 +1,110 @@
+:root {
+    /* ===== Colors ===== */
+    --color-one: #003468;
+    --color-two: #040405;
+    --color-three: #f2f2f2 ;
+    --hover-one: #0059b1;
+    --hover-two: #cce0f5;
+    --active: #0075ea;
+    --text-color: #222;
+
+    /* ===== Transitions ===== */
+    --trans-02: all 0.2s ease;
+    --trans-03: all 0.3s ease;
+    --trans-04: all 0.4s ease;
+    --trans-05: all 0.5s ease;
+}
+
+.section-3 {
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.section-3 h2 {
+    font-family: 'Lalezar';
+    font-size: clamp(3rem, 3vw, 5rem);
+    color: var(--color-one);
+    text-align: center;
+}
+
+.section-3 .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 70%;
+    justify-self: center;
+}
+
+.section-3 .content > p {
+    font-family: 'Lato';
+    text-align: justify;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-one);
+}
+
+.section-3 a {
+    text-decoration: none;
+    color: var(--color-three);
+    background-color: var(--color-one);
+    font-family: 'Lato';
+    font-weight: bold;
+    padding: 1rem 5rem;
+    border-radius: 10px;
+    transition: var(--trans-03);
+}
+
+.section-3 a:hover {
+    background-color: var(--hover-one);
+}
+
+.section-3 a:active {
+    background-color: var(--active);
+}
+
+.learnmore {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 1rem 0;
+}
+
+hr {
+    background-color: var(--color-one);
+    height: 0.6rem;
+    border: none;
+    width: 90%;
+    justify-self: center;
+}
+
+@media (max-width: 768px) {
+    .section-3 .content {
+        flex-direction: column;
+        width: 90%;
+        margin: auto;
+        gap: 1.5rem;
+    }
+
+    .section-3 .content > p {
+        font-size: 1.25rem;
+        padding: 0 1rem;
+        text-align: justify;
+    }
+
+    .section-3 a {
+        font-size: 0.9rem;
+        padding: 0.75rem 2rem;
+    }
+
+    .section-3 h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .section-3 .content > img {
+        height: 15rem;
+    }
+
+    hr {
+        height: 0.4rem;
+        width: 95%;
+    }
+}

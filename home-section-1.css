@@ -1,0 +1,104 @@
+:root {
+    /* ===== Colors ===== */
+    --color-one: #003468;
+    --color-two: #040405;
+    --color-three: #f2f2f2 ;
+    --hover-one: #0059b1;
+    --hover-two: #cce0f5;
+    --active: #0075ea;
+    --text-color: #222;
+
+    /* ===== Transitions ===== */
+    --trans-02: all 0.2s ease;
+    --trans-03: all 0.3s ease;
+    --trans-04: all 0.4s ease;
+    --trans-05: all 0.5s ease;
+}
+
+
+body{
+    margin-top: 6.8rem;
+    background-color: #e6f0fa;
+}
+
+.section-1 {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+}
+
+.section-1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./images/Municipal-3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.section-1 > * {
+    position: relative;
+    z-index: 1;
+}
+
+.section-1 h1 {
+    font-family: 'Lalezar';
+    font-size: clamp(3rem, 5vw, 7rem);
+    margin-top: clamp(3rem, 10vh, 8rem);
+    text-align: center;
+    color: var(--color-three);
+    -webkit-text-stroke: 1px var(--color-one);
+    transition: var(--trans-02);
+}
+
+.section-1 h1 > span {
+    color: var(--color-one);
+    text-decoration: none;
+}
+
+.section-1 h1:hover {
+    transform: scale(1.2);
+}
+
+.section-1 p {
+    font-family: 'Lato';
+    font-size: clamp(1rem, 2vw, 3rem);
+    margin-top: clamp(3rem, 10vh, 8rem);
+    width: 55%;
+    font-weight: bold;
+    text-align: center;
+    justify-self: center;
+    color: var(--color-one);
+    margin: 2rem;
+}
+
+@media (max-width:800px) {
+    body {
+        margin-top: 6rem;
+    }
+
+    .section-1 h1 {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .section-1 p {
+        text-align: justify;
+    }
+}
+
+@media (max-width: 600px) {
+    .section-1 {
+        background-size: cover; 
+        background-position: center; 
+        height: 120vh; 
+    }
+}
