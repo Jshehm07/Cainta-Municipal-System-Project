@@ -1,66 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Municipal Health Info System - Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./images/Cainta-Rizal-Logo.png" type="image/png">
+    
+    <!-- ====== Font Links ====== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./login.css">
+
+    <!-- ====== Boxicons Link ====== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- ====== Header and Footer Link ====== -->
+    <link rel="stylesheet" href="./top-foot.css">
+    <script src="./top-foot.js"></script>
+         
+    <!-- ====== CSS Links ====== -->
+    <link rel="stylesheet" href="./home-section-1.css">
+    <link rel="stylesheet" href="./home-section-2.css">
+    <link rel="stylesheet" href="./home-section-4.css">
+
+    <!-- ====== JS Link ====== -->
+    <script src="./logged-in.js"></script>
+
+    <title>HealthyCainta.Com</title>
 </head>
 <body>
-  <div class="navbar">
-    <img src="./images/Cainta-Rizal-Logo.png" alt="Cainta Rizal Logo" class="logo">
-    <h1>Municipal Health Info System</h1>
-    <nav class="navigation">
-      <a href="./about-us.html">About Us</a>
-      <a href="./overview.html">Services Overview</a>
-    </nav>
-  </div>
-
-  <div class="container">
-    <h2 id="formTitle">Log In</h2>
-    <form id="authForm">
-      <div id="nameField" class="hidden">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" />
-      </div>
-
-      <div id="roleField">
-        <label for="role">Login As:</label>
-        <select id="role" name="role">
-          <option value="staff">Staff</option>
-          <option value="citizen">Citizen</option>
-        </select>
-      </div>
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required />
-
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password" required />
-
-      <div id="forgotPassword" style="text-align: right; margin-top: -10px; margin-bottom: 15px;">
-        <a href="#" style="font-size: 13px;">Forgot Password?</a>
-      </div>
-
-      <div id="confirmPasswordField" class="hidden">
-        <label for="confirmPassword">Enter Password Again</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" />
-      </div>
-
-      <button type="submit" id="submitBtn">Log In</button>
-      <button type="submit" id="viewGuest">View as Guest</button>
-    </form>
-
-    <div class="links" id="switchLinks">
-      <a href="#" onclick="toggleForm('staff')">Register as Staff</a> |
-      <a href="#" onclick="toggleForm('citizen')">Register as Citizen</a>
+    <header>
+        <div class="topbar">
+            <img src="./images/Cainta-Rizal-Logo.png" alt="">
+            <h2>HEALTHY SA CAINTA RIZAL</h2>
+        </div>
+        <div class="navbar"> 
+            <i class='bx bx-menu' id="menu-btn"></i>
+            <a href="../index.html" class="hideOnMobile active">HOME</a>
+            <a href="../pages/newsfeed.html" class="hideOnMobile">NEWS</a>
+            <a href="../pages/hotline.html" class="hideOnMobile">HOTLINES</a>
+            <a href="../pages/FAQs.html" class="hideOnMobile">FAQs</a>
+            <a href="../pages/login.html" class="log hideOnLog">LOG IN</a>
+            <a href="#" class="log showOnLog">LOG OUT</a>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <a href="../index.html" class="hideOnPC active">HOME</a>
+            <a href="../pages/newsfeed.html" class="hideOnPC">NEWS</a>
+            <a href="../pages/hotline.html" class="hideOnPC">HOTLINES</a>
+            <a href="../pages/FAQs.html" class="hideOnPC">FAQs</a>
+            <a href="../pages/Scheduler.html">SCHEDULE AN APPOINTMENT</a>
+            <a href="../pages/registration.html">PATIENT REGISTRATION</a>
+            <a href="../pages/vaxtrack.html">VACCINE TRACKER</a>
+            <a href="./pages/DLForms.html">FORMS</a>
+            <a href="./pages/healtips.html">HEALTIPS</a>
+            <a href="./myaccount.html" class="showOnLog">ACCOUNT</a>
+        </div> 
+    </header>
+    
+    <div class="section-1">
+        <h1>HEALTHY SA <span>CAINTA RIZAL</span></h1>
+        
+        <p>
+            The Municipal of Cainta Rizal is ready to serve you
+            and provide help to your health needs! Check out our
+            services on our sidebar, events and drives on our news
+            section and FAQs for some A’s to your Q’s.
+        </p>
+        
     </div>
-  </div>
 
-  <script src="./login.js"></script>
+    <div class="section-2">
+        <div class="news-slider">
+
+            <div class="slides">
+                <div class="news-slide" id="slide-1">
+                <img src="./images/img-1-news.png" class="img">
+                    <div class="content">
+                        <h3>FREE CHECKUP SA CAINTA!</h3>
+                        <p>The Municipal of Cainta Rizal is offering free checkups for everyone!</p>
+                        <a href="https://www.cainta.gov.ph/healthcentersandservices" target="_blank">LEARN MORE</a>
+                    </div>
+                </div>
+
+                <div class="news-slide" id="slide-2">
+                <img src="./images/ca4.jpg" class="img">
+                    <div class="content">
+                        <h3>THE PLASTIC BENCH PROJECT</h3>
+                        <p>
+                            Plastic waste has become one of the most pressing environmental <br>
+                            hallenges of our time.
+                        </p>
+                        <a href="https://www.cainta.gov.ph/the-plastic-bench-project" target="_blank">LEARN MORE</a>
+                    </div>
+                </div>
+
+                <div class="news-slide" id="slide-3">
+                <img src="./images/img-3-news.png" class="img">
+                    <div class="content">
+                        <h3>OPERATION: LIBRENG TULI</h3>
+                        <p>Operasyon Libreng Tuli ay narito na para sa ating mga binata!</p>
+                        <a href="https://www.cainta.gov.ph/libreng-tuli" target="_blank">LEARN MORE</a>
+                    </div>
+                </div>
+
+                <div class="news-slide" id="slide-4">
+                <img src="./images/img-2-news.png" class="img">
+                    <div class="content">
+                        <h3>FREE DENTAL SA CAINTA</h3>
+                        <p>Free Dental Extractions in selected barangays of Cainta, Rizal!</p>
+                        <a href="https://www.cainta.gov.ph/dentalextractions" target="_blank">LEARN MORE</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="nav-btn left" onclick="prevSlide()">&#10094;</button>
+            <button class="nav-btn right" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+
+    <div class="section-4">
+        <hr>
+        <h2>
+            HEALTIPS! TAKE CARE OF YOURSELF AND BE BETTER!
+        </h2>
+        <div class="content">
+            <img src="./images/Health.png" alt="">
+            <p>
+                Stay prepared and keep your health documents organized—or
+                know exactly where and how to get certified—so you, your
+                loved ones, or those you assist can quickly access care
+                when it counts most!
+            </p>
+        </div>
+        <div class="learnmore">
+            <a href="#">LEARN MORE</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© ALL RIGHTS RESERVED TO HEALTHYCAINTA.PH</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const totalSlides = 4;
+        const slidesContainer = document.querySelector('.slides');
+
+        function showSlide(index) {
+            slidesContainer.style.transform = `translateX(-${index * 100}vw)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            showSlide(currentIndex);
+        }
+
+        setInterval(nextSlide, 10000);
+    </script>
+
+
 </body>
 </html>
