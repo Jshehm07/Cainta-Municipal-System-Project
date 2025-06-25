@@ -1,0 +1,36 @@
+ * { box-sizing: border-box; }
+    html, body {
+        background-color: #e6f0fa;
+        height: 100%; margin: 0;
+        font-family: 'Lato', sans-serif;
+        display: flex; flex-direction: column;
+    }
+    main { flex: 1; padding-top: 10rem; }
+    .account-box {
+      max-width: 600px; margin: 0 auto 40px; padding: 20px;
+      background: #f9f9f9; border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    .account-box h2 {
+      text-align: center; margin-bottom: 20px;
+      font-family: 'Lalezar', cursive; font-size: 2rem;
+    }
+    .account-row {
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 12px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .account-row strong { width: 30%; font-weight: 600; }
+    .account-row span, .account-row input {
+      flex: 1; font-size: 1rem;
+    }
+    .account-row input {
+      padding: 5px; font-family: 'Lato';
+    }
+    .account-row button {
+      margin-left: 10px; background: #2e7d32; color: white;
+      border: none; padding: 5px 10px;
+      border-radius: 6px; cursor: pointer;
+      font-family: 'Lato', sans-serif;
+    }
+    .account-row button:hover { background: #1b5e20; }
