@@ -21,37 +21,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const allFilled = requiredInputs.every((input) => {
       if (input.type === "checkbox" || input.type === "radio") {
         return (
-          form.querySelectorAll(`input[name="${input.name}"]:checked`).length >
-          0
+          form.querySelectorAll(`input[name="${input.name}"]:checked`).length > 0
         );
       }
       return input.value.trim() !== "";
     });
 
-    if (!allFilled) {
-      alert("Please fill in all required fields.");
-      return;
-    }
+    if (!allFilled) return;
 
     const emailField = form.querySelector("#email");
-    if (emailField && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
-      alert("Invalid email address format.");
-      return;
-    }
+    if (emailField && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) return;
 
     const phoneField = form.querySelector("#ContactNo");
-    if (phoneField && !/^(09|\+639)\d{9}$/.test(phoneField.value)) {
-      alert("Invalid Philippine contact number format.");
-      return;
-    }
+    if (phoneField && !/^(09|\+639)\d{9}$/.test(phoneField.value)) return;
 
     const formData = new FormData(form);
 
     const dob = formData.get("dob");
-    if (!dob || !/^\d{4}-\d{2}-\d{2}$/.test(dob)) {
-      alert("Please enter a valid date of birth (YYYY-MM-DD).");
-      return;
-    }
+    if (!dob || !/^\d{4}-\d{2}-\d{2}$/.test(dob)) return;
 
     const dataObj = {
       patientName: formData.get("patientName"),
@@ -80,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
       .then((res) => res.json())
       .then((response) => {
-        console.log("Server response:", response); // <--- add this
+        console.log("Server response:", response);
         if (response.success) {
           patientIDDisplay.textContent = response.patient_id || "Unknown";
           confirmation.style.display = "block";
@@ -88,12 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
           form.style.display = "none";
           form.reset();
         } else {
-          alert("Error: " + response.message);
+          console.error("Server error:", response.message);
         }
       })
       .catch((err) => {
         console.error("Fetch error:", err);
-        alert("Submission failed.");
       });
 
     closeBtn.addEventListener("click", (e) => {

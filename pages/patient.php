@@ -28,11 +28,29 @@ $age = (int)$data["age"];
 $weight = (int)$data["weight"];
 $height = (int)$data["height"];
 $birth = $conn->real_escape_string($data["dob"]);
-$allergies = isset($data["allergies"]) ? $conn->real_escape_string(implode(", ", $data["allergies"])) : "";
-$illnesses = isset($data["illnesses"]) ? $conn->real_escape_string(implode(", ", $data["illnesses"])) : "";
 
-$sql = "INSERT INTO patient (patient_name, patient_age, patient_weight, patient_height, patient_birth, patient_allergies, patient_ill)
-        VALUES ('$name', $age, $weight, $height, '$birth', '$allergies', '$illnesses')";
+$allergies = "";
+if (isset($data["allergies"])) {
+    $allergies = is_array($data["allergies"])
+        ? implode(", ", $data["allergies"])
+        : $data["allergies"];
+    $allergies = $conn->real_escape_string($allergies);
+}
+
+$illnesses = "";
+if (isset($data["illnesses"])) {
+    $illnesses = is_array($data["illnesses"])
+        ? implode(", ", $data["illnesses"])
+        : $data["illnesses"];
+    $illnesses = $conn->real_escape_string($illnesses);
+}
+
+$sql = "INSERT INTO patient (
+    patient_name, patient_age, patient_weight, patient_height,
+    patient_birth, patient_allergies, patient_ill
+) VALUES (
+    '$name', $age, $weight, $height, '$birth', '$allergies', '$illnesses'
+)";
 
 if ($conn->query($sql)) {
     echo json_encode(["success" => true, "patient_id" => $conn->insert_id]);
