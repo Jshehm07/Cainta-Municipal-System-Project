@@ -1,0 +1,63 @@
+DATABASE INSTRUCTION SETUP:
+- Install XAMPP
+- Run XAMMP as Administrator
+- Start Apache and MySQL
+- Click Admin on MySQL
+- Navigate to the query tab
+- Run the following Queries below
+- Then just install all files as is and it should work
+
+CREATE DATABASE healthycainta;
+
+CREATE TABLE `appointment` (
+  `APT_ID` int NOT NULL AUTO_INCREMENT,
+  `APT_NAME` varchar(200) NOT NULL,
+  `APT_APPOINTEE` varchar(200) DEFAULT NULL,
+  `APT_PHONE` varchar(20) DEFAULT NULL,
+  `APT_IDENTIFICATION` varchar(100) DEFAULT NULL,
+  `APT_SPECIFICS` varchar(100) NOT NULL,
+  `APT_DATE` date NOT NULL,
+  `APT_TIME` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`APT_ID`)
+);
+
+CREATE TABLE `citizen` (
+  `CITIZEN_ID` int NOT NULL AUTO_INCREMENT,
+  `CITIZEN_NAME` varchar(200) NOT NULL,
+  `CITIZEN_EMAIL` varchar(100) NOT NULL,
+  `CITIZEN_PSWD` varchar(100) NOT NULL,
+  PRIMARY KEY (`CITIZEN_ID`)
+);
+
+CREATE TABLE `patient` (
+  `PATIENT_ID` int NOT NULL AUTO_INCREMENT,
+  `PATIENT_NAME` varchar(200) NOT NULL,
+  `PATIENT_AGE` int NOT NULL,
+  `PATIENT_WEIGHT` int NOT NULL,
+  `PATIENT_HEIGHT` int NOT NULL,
+  `PATIENT_BIRTH` date NOT NULL,
+  `PATIENT_ALLERGIES` varchar(200) NOT NULL,
+  `PATIENT_ILL` varchar(200) NOT NULL,
+  PRIMARY KEY (`PATIENT_ID`)
+);
+
+CREATE TABLE `staff` (
+  `STAFF_ID` int NOT NULL AUTO_INCREMENT,
+  `STAFF_NAME` varchar(200) NOT NULL,
+  `STAFF_EMAIL` varchar(100) NOT NULL,
+  `STAFF_PSWD` varchar(100) NOT NULL,
+  `STAFF_ROLE` varchar(100) NOT NULL,
+  PRIMARY KEY (`STAFF_ID`)
+);
+
+CREATE TABLE `vaccine` (
+  `VACCINE_ID` int NOT NULL AUTO_INCREMENT,
+  `VACCINE_F_NAME` varchar(200) NOT NULL,
+  `VACCINE_L_NAME` varchar(200) NOT NULL,
+  `VACCINE_AGE` int NOT NULL,
+  `VACCINE_V_NAME` varchar(100) NOT NULL,
+  `VACCINE_F_DOSE` date NOT NULL,
+  `VACCINE_S_DOSE` date NOT NULL,
+  PRIMARY KEY (`VACCINE_ID`),
+  CONSTRAINT `CHK_AGE` CHECK ((`VACCINE_AGE` between 1 and 150))
+);
