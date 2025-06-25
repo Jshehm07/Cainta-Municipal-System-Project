@@ -141,3 +141,19 @@ function updateProfileName() {
     profileName.textContent = "Name Here";
   }
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const userName = localStorage.getItem("userName");
+    const nameDisplay = document.getElementById("userDisplayName");
+
+    console.log("Overwriting Name Here with:", userName);
+    
+    if (nameDisplay && userName) {
+      nameDisplay.textContent = userName;
+      nameDisplay.style.display = "block";
+      nameDisplay.style.visibility = "visible";
+      nameDisplay.style.color = "#000";
+    }
+  }, 100); 
+});
